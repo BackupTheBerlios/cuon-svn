@@ -6527,8 +6527,1746 @@
      
     </table>
     
+    <!-- table schema for the proposal -->
+    
+      <!--table: proposal-->
+  <table>
+    <nameOfTable>proposal</nameOfTable>
+    <specials>inherits (t_standard);</specials>
+    <x>152</x>
+    <y>115</y>
+    <field>
+      <name>number</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>1</unique>
+      <notnull>1</notnull>
+      <size>30</size>
+      <default />
+      <comment />
+    </field>
+    <field>
+      <name>designation</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>50</size>
+      <default />
+      <comment />
+    </field>
+    <field>
+      <name>orderedat</name>
+      <type>date</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+    <field>
+      <name>deliveredat</name>
+      <type>date</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+    <field>
+      <name>addressnumber</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+    <field>
+      <name>packing_cost</name>
+      <type>float</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default>0</default>
+      <comment />
+    </field>
+    <field>
+      <name>postage_cost</name>
+      <type>float</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default>0</default>
+      <comment />
+    </field>
+    <field>
+      <name>misc_cost</name>
+      <type>float</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default>0</default>
+      <comment />
+    </field>
+    <field>
+      <name>build_retry</name>
+      <type>bool</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default>0</default>
+      <comment />
+    </field>
+    <field>
+      <name>type_retry</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default>0</default>
+      <comment />
+    </field>
+    <field>
+      <name>supply_retry</name>
+      <type>bool</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default>0</default>
+      <comment />
+    </field>
+    <field>
+      <name>gets_retry</name>
+      <type>bool</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default>0</default>
+      <comment />
+    </field>
+    <field>
+      <name>invoice_retry</name>
+      <type>bool</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default>0</default>
+      <comment />
+    </field>
+    <field>
+      <name>custom_retry_days</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default>0</default>
+      <comment />
+    </field>
+    <field>
+      <name>modul_number</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default>0</default>
+      <comment />
+    </field>
+    <field>
+      <name>modul_order_number</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default>0</default>
+      <comment />
+    </field>
+    <field>
+      <name>discount</name>
+      <type>float</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default>0</default>
+      <comment />
+    </field>
+     <field>
+            <name>ready_for_invoice</name>
+            <type>bool</type>
+            <pkey>0</pkey>
+            <unique>0</unique>
+            <notnull>0</notnull>
+            <size>0</size>
+            <default></default>
+            <comment></comment>
+        </field>  
+    <field>
+      <name>process_status</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default>500</default>
+      <comment />
+    </field>
+    <field>
+      <name>proposal_number</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default>0</default>
+      <comment />
+    </field>
+    <field>
+      <name>customers_ordernumber</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>120</size>
+      <default>0</default>
+      <comment />
+    </field>
+    <field>
+      <name>customers_partner_id</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default>0</default>
+      <comment />
+    </field>
+     <field>
+      <name>project_id</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default>0</default>
+      <comment />
+    </field>
+      <field>
+      <name>staff_id</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default>0</default>
+      <comment />
+    </field>
+       <field>
+      <name>pricegroup1</name>
+      <type>bool</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default>f</default>
+      <comment />
+    </field>
+      <field>
+      <name>pricegroup2</name>
+      <type>bool</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default>f</default>
+      <comment />
+    </field>
+      <field>
+      <name>pricegroup3</name>
+      <type>bool</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default>f</default>
+      <comment />
+    </field>
+      <field>
+      <name>pricegroup4</name>
+      <type>bool</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default>f</default>
+      <comment />
+    </field>
+      <field>
+      <name>pricegroup_none</name>
+      <type>bool</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default>t</default>
+      <comment />
+    </field>
+     <field>
+      <name>discount_value</name>
+      <type>float</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default>0</default>
+      <comment />
+    </field>
+      <field>
+      <name>from_modul</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default>0</default>
+      <comment />
+    </field>
+        <field>
+      <name>from_modul_id</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default>0</default>
+      <comment />
+    </field>
+  </table>
+  
+  <!--table: proposalsupply-->
+  <table>
+    <nameOfTable>proposalsupply</nameOfTable>
+    <specials>inherits (t_standard);</specials>
+    <x>152</x>
+    <y>115</y>
+    <field>
+      <name>ordernumber</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>1</unique>
+      <notnull>1</notnull>
+      <size>30</size>
+      <default />
+      <comment />
+    </field>
+    <field>
+      <name>addressnumber</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+    <field>
+      <name>designation</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>50</size>
+      <default />
+      <comment />
+    </field>
+        <field>
+      <name>orderid</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>1</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+      <field>
+      <name>number</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>25</size>
+      <default />
+      <comment>number of this note</comment>
+    </field>
+  </table>
+  <!-- proposalget -->
+  <table>
+    <nameOfTable>proposalget</nameOfTable>
+    <specials>inherits (t_standard);</specials>
+    <x>152</x>
+    <y>115</y>
+    <field>
+      <name>ordernumber</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>1</unique>
+      <notnull>1</notnull>
+      <size>30</size>
+      <default />
+      <comment />
+    </field>
+    <field>table
+      <name>addressnumber</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+    <field>
+      <name>designation</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>50</size>
+      <default />
+      <comment />
+    </field>
+    <field>
+      <name>number</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>25</size>
+      <default />
+      <comment>number of this note</comment>
+    </field>
+    <field>
+      <name>partnernumber</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+    <field>
+      <name>loadreference</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>20</size>
+      <default />
+      <comment />
+    </field>
+    <field>
+      <name>pickup_at</name>
+      <type>date</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+    <field>
+      <name>remark_to_pickup_at</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>100</size>
+      <default />
+      <comment />
+    </field>
+    <field>
+      <name>partnernumber</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+    <field>
+      <name>forwarding_agency_number</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+    <field>
+      <name>contact_person_number</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+    <field>
+      <name>pickup_note_number</name>
+      <type>char</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>20</size>
+      <default />
+      <comment />
+    </field>
+    <field>
+      <name>pickup_note_date</name>
+      <type>date</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+    <field>
+      <name>pickup_note_status</name>
+      <type>char</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>40</size>
+      <default />
+      <comment />
+    </field>
+     <field>
+      <name>orderid</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>1</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+    
+  </table>
+  <!-- proposalposition -->
+  <table>
+    <nameOfTable>proposalposition</nameOfTable>
+    <specials>inherits (t_standard);</specials>
+    <x>152</x>
+    <y>115</y>
+    <field>
+      <name>orderid</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>1</unique>
+      <notnull>1</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+    <field>
+      <name>articleid</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>1</unique>
+      <notnull>1</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+    <field>
+      <name>designation</name>
+      <type>char</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>120</size>
+      <default />
+      <comment />
+    </field>
+    <field>
+      <name>amount</name>
+      <type>float</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>1</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+    <field>
+      <name>position</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>1</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+    <field>
+      <name>price</name>
+      <type>float</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>1</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+    <field>
+      <name>tax_vat</name>
+      <type>float</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+    <field>
+      <name>discount</name>
+      <type>float</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+  </table>
+  
+  <!-- table proposalmisc -->
+    <table>
+    <nameOfTable>proposalmisc</nameOfTable>
+    <specials>inherits (t_standard);</specials>
+    <x>152</x>
+    <y>115</y>
+    <field>
+      <name>orderid</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>1</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+      <field>
+      <name>retry</name>
+      <type>bool</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+     <field>
+      <name>monthly</name>
+      <type>bool</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+     <field>
+      <name>quarterly</name>
+      <type>bool</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+     <field>
+      <name>semestral</name>
+      <type>bool</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+     <field>
+      <name>yearly</name>
+      <type>bool</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+     <field>
+      <name>daily</name>
+      <type>bool</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+     <field>
+      <name>weekly</name>
+      <type>bool</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+      <field>
+      <name>custom_retry_days</name>
+      <type>integer</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+     <field>
+      <name>create_get</name>
+      <type>bool</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+     <field>
+      <name>create_supply</name>
+      <type>bool</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+     <field>
+      <name>create_invoice</name>
+      <type>bool</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+     <field>
+      <name>part_of_order</name>
+      <type>bool</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+     <field>
+      <name>part_of_order_number</name>
+      <type>integer</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+     <field>
+      <name>original_order_id</name>
+      <type>integer</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+   </table> 
+    
+<!-- table proposalinvoice -->
+
+  <table>
+    <nameOfTable>proposalinvoice</nameOfTable>
+    <specials>inherits (t_standard);</specials>
+    <x>152</x>
+    <y>115</y>
+    <field>
+      <name>orderid</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>1</unique>
+      <notnull>1</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+    <field>
+      <name>order_top</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>1</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+    <field>
+      <name>tax_vat_for_all_positions</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default>0</default>
+      <comment />
+    </field>
+      <field>
+      <name>different_billing_address_id</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>1</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+    </table>
+    
+       <!-- table schema for the enquiry -->
+    
+      <!--table: enquiry-->
+  <table>
+    <nameOfTable>enquiry</nameOfTable>
+    <specials>inherits (t_standard);</specials>
+    <x>152</x>
+    <y>115</y>
+    <field>
+      <name>number</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>1</unique>
+      <notnull>1</notnull>
+      <size>30</size>
+      <default />
+      <comment />
+    </field>
+    <field>
+      <name>designation</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>50</size>
+      <default />
+      <comment />
+    </field>
+    <field>
+      <name>orderedat</name>
+      <type>date</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+    <field>
+      <name>deliveredat</name>
+      <type>date</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+    <field>
+      <name>addressnumber</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+    <field>
+      <name>packing_cost</name>
+      <type>float</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default>0</default>
+      <comment />
+    </field>
+    <field>
+      <name>postage_cost</name>
+      <type>float</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default>0</default>
+      <comment />
+    </field>
+    <field>
+      <name>misc_cost</name>
+      <type>float</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default>0</default>
+      <comment />
+    </field>
+    <field>
+      <name>build_retry</name>
+      <type>bool</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default>0</default>
+      <comment />
+    </field>
+    <field>
+      <name>type_retry</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default>0</default>
+      <comment />
+    </field>
+    <field>
+      <name>supply_retry</name>
+      <type>bool</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default>0</default>
+      <comment />
+    </field>
+    <field>
+      <name>gets_retry</name>
+      <type>bool</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default>0</default>
+      <comment />
+    </field>
+    <field>
+      <name>invoice_retry</name>
+      <type>bool</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default>0</default>
+      <comment />
+    </field>
+    <field>
+      <name>custom_retry_days</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default>0</default>
+      <comment />
+    </field>
+    <field>
+      <name>modul_number</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default>0</default>
+      <comment />
+    </field>
+    <field>
+      <name>modul_order_number</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default>0</default>
+      <comment />
+    </field>
+    <field>
+      <name>discount</name>
+      <type>float</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default>0</default>
+      <comment />
+    </field>
+     <field>
+            <name>ready_for_invoice</name>
+            <type>bool</type>
+            <pkey>0</pkey>
+            <unique>0</unique>
+            <notnull>0</notnull>
+            <size>0</size>
+            <default></default>
+            <comment></comment>
+        </field>  
+    <field>
+      <name>process_status</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default>500</default>
+      <comment />
+    </field>
+    <field>
+      <name>proposal_number</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default>0</default>
+      <comment />
+    </field>
+    <field>
+      <name>customers_ordernumber</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>120</size>
+      <default>0</default>
+      <comment />
+    </field>
+    <field>
+      <name>customers_partner_id</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default>0</default>
+      <comment />
+    </field>
+     <field>
+      <name>project_id</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default>0</default>
+      <comment />
+    </field>
+      <field>
+      <name>staff_id</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default>0</default>
+      <comment />
+    </field>
+       <field>
+      <name>pricegroup1</name>
+      <type>bool</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default>f</default>
+      <comment />
+    </field>
+      <field>
+      <name>pricegroup2</name>
+      <type>bool</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default>f</default>
+      <comment />
+    </field>
+      <field>
+      <name>pricegroup3</name>
+      <type>bool</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default>f</default>
+      <comment />
+    </field>
+      <field>
+      <name>pricegroup4</name>
+      <type>bool</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default>f</default>
+      <comment />
+    </field>
+      <field>
+      <name>pricegroup_none</name>
+      <type>bool</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default>t</default>
+      <comment />
+    </field>
+     <field>
+      <name>discount_value</name>
+      <type>float</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default>0</default>
+      <comment />
+    </field>
+      <field>
+      <name>from_modul</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default>0</default>
+      <comment />
+    </field>
+        <field>
+      <name>from_modul_id</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default>0</default>
+      <comment />
+    </field>
+  </table>
+  
+  <!--table: enquirysupply-->
+  <table>
+    <nameOfTable>enquirysupply</nameOfTable>
+    <specials>inherits (t_standard);</specials>
+    <x>152</x>
+    <y>115</y>
+    <field>
+      <name>ordernumber</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>1</unique>
+      <notnull>1</notnull>
+      <size>30</size>
+      <default />
+      <comment />
+    </field>
+    <field>
+      <name>addressnumber</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+    <field>
+      <name>designation</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>50</size>
+      <default />
+      <comment />
+    </field>
+        <field>
+      <name>orderid</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>1</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+      <field>
+      <name>number</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>25</size>
+      <default />
+      <comment>number of this note</comment>
+    </field>
+  </table>
+  <!-- enquiryget -->
+  <table>
+    <nameOfTable>enquiryget</nameOfTable>
+    <specials>inherits (t_standard);</specials>
+    <x>152</x>
+    <y>115</y>
+    <field>
+      <name>ordernumber</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>1</unique>
+      <notnull>1</notnull>
+      <size>30</size>
+      <default />
+      <comment />
+    </field>
+    <field>table
+      <name>addressnumber</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+    <field>
+      <name>designation</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>50</size>
+      <default />
+      <comment />
+    </field>
+    <field>
+      <name>number</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>25</size>
+      <default />
+      <comment>number of this note</comment>
+    </field>
+    <field>
+      <name>partnernumber</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+    <field>
+      <name>loadreference</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>20</size>
+      <default />
+      <comment />
+    </field>
+    <field>
+      <name>pickup_at</name>
+      <type>date</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+    <field>
+      <name>remark_to_pickup_at</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>100</size>
+      <default />
+      <comment />
+    </field>
+    <field>
+      <name>partnernumber</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+    <field>
+      <name>forwarding_agency_number</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+    <field>
+      <name>contact_person_number</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+    <field>
+      <name>pickup_note_number</name>
+      <type>char</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>20</size>
+      <default />
+      <comment />
+    </field>
+    <field>
+      <name>pickup_note_date</name>
+      <type>date</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+    <field>
+      <name>pickup_note_status</name>
+      <type>char</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>40</size>
+      <default />
+      <comment />
+    </field>
+     <field>
+      <name>orderid</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>1</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+    
+  </table>
+  <!-- enquiryposition -->
+  <table>
+    <nameOfTable>enquiryposition</nameOfTable>
+    <specials>inherits (t_standard);</specials>
+    <x>152</x>
+    <y>115</y>
+    <field>
+      <name>orderid</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>1</unique>
+      <notnull>1</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+    <field>
+      <name>articleid</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>1</unique>
+      <notnull>1</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+    <field>
+      <name>designation</name>
+      <type>char</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>120</size>
+      <default />
+      <comment />
+    </field>
+    <field>
+      <name>amount</name>
+      <type>float</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>1</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+    <field>
+      <name>position</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>1</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+    <field>
+      <name>price</name>
+      <type>float</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>1</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+    <field>
+      <name>tax_vat</name>
+      <type>float</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+    <field>
+      <name>discount</name>
+      <type>float</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+  </table>
+  
+  <!-- table enquirymisc -->
+    <table>
+    <nameOfTable>enquirymisc</nameOfTable>
+    <specials>inherits (t_standard);</specials>
+    <x>152</x>
+    <y>115</y>
+    <field>
+      <name>orderid</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>1</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+      <field>
+      <name>retry</name>
+      <type>bool</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+     <field>
+      <name>monthly</name>
+      <type>bool</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+     <field>
+      <name>quarterly</name>
+      <type>bool</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+     <field>
+      <name>semestral</name>
+      <type>bool</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+     <field>
+      <name>yearly</name>
+      <type>bool</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+     <field>
+      <name>daily</name>
+      <type>bool</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+     <field>
+      <name>weekly</name>
+      <type>bool</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+      <field>
+      <name>custom_retry_days</name>
+      <type>integer</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+     <field>
+      <name>create_get</name>
+      <type>bool</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+     <field>
+      <name>create_supply</name>
+      <type>bool</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+     <field>
+      <name>create_invoice</name>
+      <type>bool</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+     <field>
+      <name>part_of_order</name>
+      <type>bool</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+     <field>
+      <name>part_of_order_number</name>
+      <type>integer</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+     <field>
+      <name>original_order_id</name>
+      <type>integer</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+   </table> 
+    
+<!-- table enquiryinvoice -->
+
+  <table>
+    <nameOfTable>enquiryinvoice</nameOfTable>
+    <specials>inherits (t_standard);</specials>
+    <x>152</x>
+    <y>115</y>
+    <field>
+      <name>orderid</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>1</unique>
+      <notnull>1</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+    <field>
+      <name>order_top</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>1</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+    <field>
+      <name>tax_vat_for_all_positions</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default>0</default>
+      <comment />
+    </field>
+      <field>
+      <name>different_billing_address_id</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>1</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+    </table>
+    
+  <!-- table planet -->
+  <table>
+    <nameOfTable>planet</nameOfTable>
+    <specials>inherits (t_standard);</specials>
+    <x>152</x>
+    <y>115</y>
+    <field>
+      <name>name</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>1</unique>
+      <notnull>1</notnull>
+      <size>100</size>
+      <default />
+      <comment />
+    </field>
+    <field>
+      <name>name2</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>100</size>
+      <default />
+      <comment />
+    </field>
+    <field>
+      <name>orbit</name>
+      <type>float</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+    
+    <field>
+      <name>diameter</name>
+      <type>float</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+     <field>
+      <name>solar_system_id</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
     
     
+    </table>
     
   <database_sequence>
     <nameOfSequence>numerical_misc_standard_invoice</nameOfSequence>
@@ -6648,5 +8386,13 @@
     <sequence_cycle>Yes</sequence_cycle>
     <sequence_cache>0</sequence_cache>
   </database_sequence>
-  
+   <database_sequence>
+    <nameOfSequence>numerical_inquiry_inquirynumber</nameOfSequence>
+    <sequence_increment>1</sequence_increment>
+    <sequence_start>1000</sequence_start>
+    <sequence_minvalue>1</sequence_minvalue>
+    <sequence_maxvalue>500000</sequence_maxvalue>
+    <sequence_cycle>Yes</sequence_cycle>
+    <sequence_cache>0</sequence_cache>
+  </database_sequence>
 </database>

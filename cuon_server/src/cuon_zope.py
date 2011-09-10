@@ -4,6 +4,7 @@ import sys
 import time
 import random	
 import xmlrpclib
+import uuid
 
 CUON_FS = None
 CUON_AI_SERVER="http://84.244.7.139:8765"
@@ -134,21 +135,22 @@ def writeLog(sLogEntry):
     file.close()
     
                
-def createSessionID(secValue = 36000):
+def createSessionID(secValue = 72000):
     
-    s = ''
-	
-    n = random.randint(0,1000000000)
-    for i in range(27):
-        ok = True
-        while ok:
-            r = random.randint(65,122)
-            if r < 91 or r > 96:
-                ok = False
-                s = s + chr(r)
-
-    s = s + `n`
-    writeLog(s)
+#    s = ''
+#	
+#    n = random.randint(0,1000000000)
+#    for i in range(27):
+#        ok = True
+#        while ok:
+#            r = random.randint(65,122)
+#            if r < 91 or r > 96:
+#                ok = False
+#                s = s + chr(r)
+#
+#    s = s + `n`
+#    writeLog(s)
+    s = str(uuid.uuid4())
     return {'SessionID':s, 'endTime': time.time() + secValue}
 
 def checkEndTime(fTime):

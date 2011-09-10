@@ -1,21 +1,23 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
->Stammdaten</TITLE
+>Druckvorlagen</TITLE
 ><META
 NAME="GENERATOR"
 CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE=" C.U.O.N. "
 HREF="index.html"><LINK
+REL="UP"
+TITLE="C.U.O.N. Administration"
+HREF="p45.html"><LINK
 REL="PREVIOUS"
-TITLE="Konfiguration 
-"
-HREF="c285.html"><LINK
+TITLE="Konfiguration "
+HREF="x229.html"><LINK
 REL="NEXT"
-TITLE="Adressverwaltung"
-HREF="x302.html"></HEAD
+TITLE="Reports"
+HREF="c507.html"></HEAD
 ><BODY
 CLASS="chapter"
 BGCOLOR="#FFFFFF"
@@ -35,7 +37,7 @@ CELLSPACING="0"
 ><TH
 COLSPAN="3"
 ALIGN="center"
->C.U.O.N.:  Installation and Benutzung </TH
+>C.U.O.N.:  Installation und Benutzung </TH
 ></TR
 ><TR
 ><TD
@@ -43,7 +45,7 @@ WIDTH="10%"
 ALIGN="left"
 VALIGN="bottom"
 ><A
-HREF="c285.html"
+HREF="x229.html"
 ACCESSKEY="P"
 >Prev</A
 ></TD
@@ -57,7 +59,7 @@ WIDTH="10%"
 ALIGN="right"
 VALIGN="bottom"
 ><A
-HREF="x302.html"
+HREF="c507.html"
 ACCESSKEY="N"
 >Next</A
 ></TD
@@ -72,44 +74,546 @@ CLASS="chapter"
 ><A
 NAME="AEN290"
 ></A
->Chapter 4. Stammdaten</H1
+>Chapter 2. Druckvorlagen</H1
 ><DIV
 CLASS="sect1"
 ><H1
 CLASS="sect1"
 ><A
-NAME="s1"
->4.1. Mandanten</A
+NAME="DMS_Vorlagen"
+>2.1. Briefe mit einem Office-Programm erzeugen</A
 ></H1
-><P
->Hier werden die Mandanten in C.U.O.N. gepflegt. Mindestens ein Mandant muß vorhanden sein. Ist beim ersten Start kein Mandant vorhanden, muß ein Mandant angelegt werden und dieser ausgewählt werden, bevor Mann/Frau weiterkommt . Jeder Mandant hat seinen eigenen Bereich(Eigene Rechnungsnummern, Kunden, etc.) und ist von den anderen Mandanten isoliert.
-</P
 ><DIV
-CLASS="figure"
+CLASS="sect2"
+><H2
+CLASS="sect2"
 ><A
-NAME="si1"
-></A
+NAME="br1"
+>2.1.1. Allgemeine Bemerkungen</A
+></H2
 ><P
-><B
->Figure 4-1. Mandantenfenster</B
-></P
-><P
-><IMG
-SRC="images/screenshots/Mandanten.png"
-ALIGN="center"></P
-></DIV
-><P
->Man kann damit sehr schön mehrere Firmen auf einem Server verwalten.</P
-><P
->In der Datei /etc/cuon/clients.ini wird festgelegt, welcher User, welchen Mandant sehen und auswählen kann.</P
-><P
+>&#13;Das <A
+HREF="c1385.html#dms1"
 ><SPAN
 CLASS="emphasis"
 ><I
 CLASS="emphasis"
->Achtung: Momentan lassen sich angelegte Mandanten nicht mehr löschen (das muss per Hand auf Datenbankebene gemacht werden).</I
+>DMS</I
 ></SPAN
+></A
+> wird auch benutzt, um Briefe, Rundschreiben oder sonstigen Schriftverkehr zu erzeugen. Dazu habe ich hier ein kleines Beispiel mit LibreOffice (OpenOffice) ausgearbeitet. Zur Zeit werden folgende Formate unterstützt:</P
+><P
 ></P
+><UL
+><LI
+><P
+> Einfache Textdokumente</P
+></LI
+><LI
+><P
+> LibreOffice</P
+></LI
+><LI
+><P
+>  OpenOffice</P
+></LI
+></UL
+><P
+>&#13;Falls ein von Ihnen gewünschtes Format nicht vorhanden ist, schreiben sie mir bitte eine E-Mail. Das folgende Vorgehen ist grundsätzlich bei allen Formaten gleich.
+ </P
+><P
+>&#13;Es sollen 2 Vorlagen für den Schriftverkehr erstellt werden, ein Briefvordruck für ein direktes Anschreiben der Fa, ein Briefvordruck für ein Anschreiben an einen Gesrächspartner.</P
+><P
+>&#13;Dazu erstellen Sie jeweils einen beliebigen Briefvordruck und setzen an die entsprechenden Stellen die Platzhalter, die mit ## beginnen und mit ;; enden. Für den Nachnahmen wäre das also:</P
+><DIV
+CLASS="example"
+><A
+NAME="brpm"
+></A
+><P
+><B
+>Example 2-1. Platzhlter Markierung</B
+></P
+><PRE
+CLASS="programlisting"
+>&#13;  ##lastname;;
+    (im odt Format,  kein rtf nehmen)
+
+</PRE
+></DIV
+><P
+>&#13;Dann speichern Sie das Dokument ab. Anschließend benutzen Sie die Addressverwaltung, selektieren eine Adresse und klicken auf den Brief-Button ( im engl. letter ). Jetzt öffnet sich das <A
+HREF="c1385.html#dms1"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="emphasis"
+>DMS</I
+></SPAN
+></A
+> und sie legen ein neues Dokument an. Als Titel geben Sie z.B. Briefkopf an.Suchen Sie dann Ihr Briefkopf-Dokument und importieren Sie es.
+</P
+><P
+>Jetzt haben Sie in allen Adressen die Möglichkeit, diesen Briefkopf zu benutzen. Dies geschieht folgendermaßen: Gehen sie in die Addressverwaltung und suchen sie eine Adresse. Dann drücken sie den Brief-Button. Die DMS öffnet sich und Sie wählen die gewünschte Vorlage (z.B. Briefkopf oder Info-Anschreiben oder Urlaubsmitteilung oder ... was auch immer ). Drücken sie auf View und OpenOffice? öffnet sich und an Stelle der Platzhalter stehen die entsprechenden Feldinhalte, z.B. die Adresse. Jetzt können Sie den Brief schreiben und verändern, und dann eben Drucken, Faxen oder per E-Mail versenden.</P
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="tab1"
+>2.1.2. Platzhalter</A
+></H2
+><P
+>&#13;<DIV
+CLASS="table"
+><A
+NAME="tab1_grund"
+></A
+><P
+><B
+>Table 2-1. Grundsätzliche Platzhalter </B
+></P
+><TABLE
+BORDER="1"
+CLASS="CALSTABLE"
+><COL><COL><THEAD
+><TR
+><TH
+>Beschreibung</TH
+><TH
+>Platzhalter</TH
+></TR
+></THEAD
+><TBODY
+><TR
+><TD
+>Datum</TD
+><TD
+>date_date</TD
+></TR
+><TR
+><TD
+>Uhrzeit</TD
+><TD
+>date_time</TD
+></TR
+><TR
+><TD
+>Zeitstempel </TD
+><TD
+>date_timestamp</TD
+></TR
+></TBODY
+></TABLE
+></DIV
+>
+
+</P
+><P
+>&#13;    
+<DIV
+CLASS="table"
+><A
+NAME="tab2_benutzerinfo"
+></A
+><P
+><B
+>Table 2-2. Benutzerinfo</B
+></P
+><TABLE
+BORDER="1"
+CLASS="CALSTABLE"
+><COL><COL><THEAD
+><TR
+><TH
+>Benutzerinfo</TH
+><TH
+>Platzhalter</TH
+></TR
+></THEAD
+><TBODY
+><TR
+><TD
+>Anrede</TD
+><TD
+>userinfo_address</TD
+></TR
+><TR
+><TD
+>Nachname</TD
+><TD
+>userinfo_lastname</TD
+></TR
+><TR
+><TD
+>Vorname</TD
+><TD
+>userinfo_firstname</TD
+></TR
+><TR
+><TD
+>Telefon</TD
+><TD
+>userinfo_phone</TD
+></TR
+><TR
+><TD
+>Telefon 2</TD
+><TD
+>userinfo_phone1</TD
+></TR
+><TR
+><TD
+>Briefanrede1</TD
+><TD
+>userinfo_letter_phrase_1</TD
+></TR
+><TR
+><TD
+>Mein zeichen</TD
+><TD
+>userinfo_ my_sign_1</TD
+></TR
+><TR
+><TD
+>Längere Signatur 1 </TD
+><TD
+>userinfo_signature_1</TD
+></TR
+><TR
+><TD
+>Längere Signature 2</TD
+><TD
+>userinfo_signature_2</TD
+></TR
+></TBODY
+></TABLE
+></DIV
+>
+
+</P
+><P
+>&#13;Dieselben Benutzerinfos gibt es für person1_ oder person2_ anstelle von userinfo_
+</P
+><P
+>&#13;<DIV
+CLASS="table"
+><A
+NAME="tab2_adressverwaltung"
+></A
+><P
+><B
+>Table 2-3. Platzhalter Adressverwaltung </B
+></P
+><TABLE
+BORDER="1"
+CLASS="CALSTABLE"
+><COL><COL><THEAD
+><TR
+><TH
+>Beschreibung</TH
+><TH
+>Platzhalter</TH
+></TR
+></THEAD
+><TBODY
+><TR
+><TD
+>Anrede</TD
+><TD
+>address</TD
+></TR
+><TR
+><TD
+>Nachname</TD
+><TD
+>lastname</TD
+></TR
+><TR
+><TD
+>Nachname 2</TD
+><TD
+>lastname2</TD
+></TR
+><TR
+><TD
+>Vorname</TD
+><TD
+>firstname</TD
+></TR
+><TR
+><TD
+>Handynummer</TD
+><TD
+>phone_handy</TD
+></TR
+><TR
+><TD
+>Straße</TD
+><TD
+>street</TD
+></TR
+><TR
+><TD
+>Postleitzahl</TD
+><TD
+>zip</TD
+></TR
+><TR
+><TD
+>Stadt</TD
+><TD
+>city</TD
+></TR
+><TR
+><TD
+>Briefanrede</TD
+><TD
+>letter_address</TD
+></TR
+><TR
+><TD
+>Branche</TD
+><TD
+>misc_line</TD
+></TR
+><TR
+><TD
+>Mwst-ID</TD
+><TD
+>misc_taxnumber</TD
+></TR
+><TR
+><TD
+>Mwst berechnen</TD
+><TD
+>misc_to_calc_tax</TD
+></TR
+><TR
+><TD
+>Preisgruppe</TD
+><TD
+>misc_price_group</TD
+></TR
+><TR
+><TD
+>Adressnummer</TD
+><TD
+>misc_address_number</TD
+></TR
+><TR
+><TD
+>Adresse ist im Webshop</TD
+><TD
+>misc_is_webshop</TD
+></TR
+><TR
+><TD
+>Adresse mit Webshop abgleichen</TD
+><TD
+>misc_update_from_webshop</TD
+></TR
+><TR
+><TD
+>Zahlungsbedinguen-ID</TD
+><TD
+>misc_top_id</TD
+></TR
+><TR
+><TD
+>Gründungsdatum</TD
+><TD
+>misc_date_of_launch</TD
+></TR
+><TR
+><TD
+>Rechtsform</TD
+><TD
+>misc_legal_form</TD
+></TR
+><TR
+><TD
+>Umsatz</TD
+><TD
+>misc_turnover</TD
+></TR
+><TR
+><TD
+>Mitarbeiteranzahl</TD
+><TD
+>misc_count_of_employees</TD
+></TR
+><TR
+><TD
+>Handel</TD
+><TD
+>misc_trade</TD
+></TR
+><TR
+><TD
+>Typ</TD
+><TD
+>misc_cb_fashion</TD
+></TR
+></TBODY
+></TABLE
+></DIV
+>
+
+
+
+</P
+><P
+>&#13;<DIV
+CLASS="table"
+><A
+NAME="tab2_gesraechspartner"
+></A
+><P
+><B
+>Table 2-4. Platzhalter Gesprächspartner </B
+></P
+><TABLE
+BORDER="1"
+CLASS="CALSTABLE"
+><COL><COL><THEAD
+><TR
+><TH
+>Beschreibung</TH
+><TH
+>Platzhalter</TH
+></TR
+></THEAD
+><TBODY
+><TR
+><TD
+>Anrede</TD
+><TD
+>address_address</TD
+></TR
+><TR
+><TD
+>Nachname</TD
+><TD
+>address_lastname</TD
+></TR
+><TR
+><TD
+>Nachname 2</TD
+><TD
+>address_lastname2</TD
+></TR
+><TR
+><TD
+>Vorname</TD
+><TD
+>address_firstname</TD
+></TR
+><TR
+><TD
+>Straße</TD
+><TD
+>address_street</TD
+></TR
+><TR
+><TD
+>Postleitzahl</TD
+><TD
+>address_zip</TD
+></TR
+><TR
+><TD
+>Stadt</TD
+><TD
+>address_city</TD
+></TR
+><TR
+><TD
+>Briefanrede</TD
+><TD
+>address_letter_address</TD
+></TR
+><TR
+><TD
+>Gesprächspartner-Anrede</TD
+><TD
+>address</TD
+></TR
+><TR
+><TD
+>Gesprächspartner-Nachname</TD
+><TD
+>lastname</TD
+></TR
+><TR
+><TD
+>Gesprächspartner-Vorname</TD
+><TD
+>firstname</TD
+></TR
+><TR
+><TD
+>Gesprächspartner-Straße</TD
+><TD
+>street</TD
+></TR
+><TR
+><TD
+>Gesprächspartner-Postleitzahl</TD
+><TD
+>zip</TD
+></TR
+><TR
+><TD
+>Gesprächspartner-Briefanrede</TD
+><TD
+>letter_address</TD
+></TR
+></TBODY
+></TABLE
+></DIV
+>
+
+</P
+><P
+>Platzhalter Termin 
+Beschreibung    Platzhalter
+Adress-Anrede   address_address
+Adress-Nachname     address_lastname
+Adress-Nachname 2   address_lastname2
+Adress-Vorname  address_firstname
+Adress-Straße   address_street
+Adress-Postleitzahl     address_zip
+Adress-Stadt    address_city
+Gesprächspartner-Anrede     partner_address
+Gesprächspartner-Nachname   lpartner_astname
+Gesprächspartner-Nachname 2     partner_lastname2
+Gesprächspartner-Vorname    partner_firstname
+Gesprächspartner-Straße     partner_street
+Gesprächspartner-Postleitzahl   partner_zip
+Gesprächspartner-Stadt  partner_city
+Gesprächspartner-Briefanrede    partner_letter_address
+Datum Termin    schedul_date
+Beginn  schedul_time_begin
+Ende    schedul_time_end
+Kurze bemerkung     short_remark
+Notiz   notes</P
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="Anmerkungen"
+>2.1.3. Anmerkungen</A
+></H2
+><P
+>Mit den Button save last document wird ein neues DMS geöffnet, passend zur Adresse und sie können jetzt einfach einen Titel für das Dokument eingeben und auf sichern gehen.
+</P
+><P
+>Damit wird der Schriftverkehr automatisch den entsprechenden Adressen und Gesprächspartnern zugeordnet.</P
+></DIV
 ></DIV
 ></DIV
 ><DIV
@@ -128,7 +632,7 @@ WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
 ><A
-HREF="c285.html"
+HREF="x229.html"
 ACCESSKEY="P"
 >Prev</A
 ></TD
@@ -146,7 +650,7 @@ WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
 ><A
-HREF="x302.html"
+HREF="c507.html"
 ACCESSKEY="N"
 >Next</A
 ></TD
@@ -161,12 +665,16 @@ VALIGN="top"
 WIDTH="34%"
 ALIGN="center"
 VALIGN="top"
->&nbsp;</TD
+><A
+HREF="p45.html"
+ACCESSKEY="U"
+>Up</A
+></TD
 ><TD
 WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
->Adressverwaltung</TD
+>Reports</TD
 ></TR
 ></TABLE
 ></DIV

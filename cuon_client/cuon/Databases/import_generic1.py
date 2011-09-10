@@ -202,8 +202,8 @@ class import_generic1(fileSelection):
             
             for i in range(len(self.dicFileAttributes['liColumns'])):
                 if self.dicFileAttributes['liColumns'][i]['field'].upper() != 'NONE':
-                    #print '###--> ',i,  self.dicFileAttributes['liColumns'][i]['field']
-                    #print self.dicFileAttributes['liColumns'][i]['name'] ,  self.dicFileAttributes['liColumns'][i]['field']
+                    print '###--> ',i,  self.dicFileAttributes['liColumns'][i]['field']
+                    print self.dicFileAttributes['liColumns'][i]['name'] ,  self.dicFileAttributes['liColumns'][i]['field']
                     
                     dicValues[self.dicFileAttributes['liColumns'][i]['name']] = [lS1[i].strip(),self.dicFileAttributes['liColumns'][i]['field']]
 

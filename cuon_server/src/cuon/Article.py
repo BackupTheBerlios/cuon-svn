@@ -448,3 +448,12 @@ class Article(xmlrpc.XMLRPC, basics):
         sSql = "select * from fct_duplicateArticle(" + `id` + ") as newid "
         return  self.oDatabase.xmlrpc_executeNormalQuery(sSql,dicUser) [0]['newid']
         
+
+    def xmlrpc_getSellingPrices(self,  iArticleID, iPartID,    dicUser):
+        sSql = "select * from fct_getSellingPricesForArticle(" + `iArticleID` +", " + `iPartID` +  ") as (quntity float, s1 float, s2 float, s3 float, s4 float, ts1 float, ts2 float, ts3 float, ts4 float )"
+        return  self.oDatabase.xmlrpc_executeNormalQuery(sSql,dicUser) [0]
+      
+    def xmlrpc_getTotalSellingPrices(self,  iArticleID, iPartID,    dicUser):
+        sSql = "select * from fct_getTotalSellingPricesForArticle(" + `iArticleID` +  ") as (quntity float, s1 float, s2 float, s3 float, s4 float, ts1 float, ts2 float, ts3 float, ts4 float )"
+        return  self.oDatabase.xmlrpc_executeNormalQuery(sSql,dicUser) [0]
+       

@@ -121,7 +121,7 @@ class Projects(xmlrpc.XMLRPC, basics):
                 if rep_name:    
                     sSql = "select '" + rep_name + "' as rep_name_" + rep + " ,"
                     for vSql in liSql:
-                        for z1 in range(-5,20):
+                        for z1 in xrange(-5,20):
                             if vSql['id'] == 'decade' and z1 > 4:
                                 pass
                             elif vSql['id'] == 'century' and z1 > 1:

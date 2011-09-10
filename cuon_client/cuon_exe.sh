@@ -1,6 +1,7 @@
 #!/bin/sh
 
 EXEC=/usr/bin/python
+#EXEC=/usr/bin/pypy-c1.5 
 # PARAMETER=client NO /home/jhamel/cuon/locale /home/jhamel/cuon
 CLIENT=client
 DEBUG=NO

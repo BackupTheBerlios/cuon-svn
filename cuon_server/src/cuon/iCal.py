@@ -18,7 +18,7 @@ class iCal(xmlrpc.XMLRPC, basics):
         s = ''
     
         n = random.randint(500000,1000000000)
-        for i in range(27):
+        for i in xrange(27):
             ok = True
             while ok:
                 r = random.randint(65,122)

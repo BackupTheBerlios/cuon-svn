@@ -314,7 +314,7 @@ class MainWindow(windows):
         
         windows.__init__(self)
         self.sStartType = sT
-        self.Version = {'Major': 11, 'Minor': 7, 'Rev': 11, 'Species': 0, 'Maschine': 'Linux,BSD,Windows,Mac'}
+        self.Version = {'Major': 11, 'Minor': 9, 'Rev': 10, 'Species': 0, 'Maschine': 'Linux,BSD,Windows,Mac'}
         
         self.sTitle =  `self.Version['Major']` + '.' + `self.Version['Minor']` + '.' + `self.Version['Rev']` 
         self.t0 = None
@@ -619,10 +619,10 @@ class MainWindow(windows):
     def generateSqlObjects(self):
         self.setProgressBar( 0.4)
         entryList = self.rpc.callRP('Database.executeNormalQuery',"select  skey from cuon where skey ~* 'entry_' ")
-        print entryList
+        #print entryList
         self.openDB()
         for i in entryList:
-            print i['skey']
+            #print i['skey']
             sk = self.rpc.callRP('Database.getInfo', i['skey'])
             
             self.saveObject(i['skey'],sk)

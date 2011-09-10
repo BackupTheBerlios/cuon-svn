@@ -194,7 +194,7 @@ openssl req -new -x509 -key serverkey.pem -out servercert.pem -days 1095
 <para>Yes, now you can go on with the Setup-Tool, you may now do the same steps as they are describe at the chapters <emphasis>Configuration</emphasis> and <emphasis>Update</emphasis>. </para>
 </sect2>
 
- <sect2 id="opt_files"><title>Optional Programs</title>
+ <sect2 id="opt_files"><title>Optional Programs for the Server</title>
  
  <sect3 id="opt_text"><title>Extract text summary</title>
 <para>It is a good idea to install this additional programs, they are working with the email program and the DMS to extract data and save them into the DMS for the FULL TEXT SEARCH:</para>
@@ -217,6 +217,10 @@ openssl req -new -x509 -key serverkey.pem -out servercert.pem -days 1095
 
 <para>To use the Loadbalancer please set in the cuon_client the port from 7080 to 7000 or for HTTPS from 7590 to 7500.</para> 
 </sect3>
+</sect2>
+<sect2 id="opt_files_client"><title>Optionale Programme for the  Client</title>
+<para>The Python Lib matplotlib</para>
+
 </sect2>
     </sect1>
   </chapter>
@@ -462,6 +466,13 @@ AdditinalEmailAddressesNotes0: <email>jh@web.com</email> # additional email addr
 sendMailsNotes0: caller,rep,salesman # internal notes for caller, reps or salesman 
 #Default term of payment 
 modul_order_default_top: 1 # ID of the term of payment 
+
+#Group names of the groups that have the rights to work or open this documents in the DMS
+
+GroupNameInvoice:Rechnung
+GroupNameOrder:Auftrag
+GroupNameProposal:Angebot
+
 
 # Memories and reminders in Accounting
 # These values determine the date from invoice appears in the reminders. A second dependence is noted for the payment.

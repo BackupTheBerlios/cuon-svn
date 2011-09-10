@@ -11,7 +11,7 @@
 ##You should have received a copy of the GNU General Public License along with this program; if not, write to the
 ##Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA. 
 
-import time,  glob,  os
+import time,  glob,  os 
 import xmlrpclib
 from twisted.web import xmlrpc
 from twisted.internet import defer
@@ -624,19 +624,20 @@ class basics(xmlrpc.XMLRPC):
         
     def createNewSessionID(self, secValue = 42000):
         
-        s = ''
-        
-        n = random.randint(0,1000000000)
-        for i in range(27):
-            ok = True
-            while ok:
-                r = random.randint(65,122)
-                if r < 91 or r > 96:
-                    ok = False
-                    s = s + chr(r)
-    
-        s = s + `n`
+#        s = ''
+#        
+#        n = random.randint(0,1000000000)
+#        for i in xrange(27):
+#            ok = True
+#            while ok:
+#                r = random.randint(65,122)
+#                if r < 91 or r > 96:
+#                    ok = False
+#                    s = s + chr(r)
+#    
+#        s = s + `n`
         #writeLog(s)
+        s=str(uuid.uuid4())
         return {'SessionID':s, 'endTime': time.time() + secValue}
 
     def getUserInfo(self, dicUser):
@@ -780,7 +781,7 @@ class basics(xmlrpc.XMLRPC):
     def getNow(self, vSql, z1,  year=1900):
         newTime = time.localtime()
         if year == 1900:
-            year = time.strftime('%Y', newTime)
+            year = int(time.strftime('%Y', newTime))
         newTime = time.localtime()
         datepart = vSql['id']
         now = 0
@@ -1063,7 +1064,7 @@ class basics(xmlrpc.XMLRPC):
                                                                        
         # check to client id 
         if dicUser['client'] == -7:
-            for clientID in range(50):
+            for clientID in xrange(50):
                 if os.path.isdir(repPath + 'client_' + `clientID`):
                     liReport2 += glob.glob(repPath + 'client_' + `clientID` + "/" + sPattern)
         else:

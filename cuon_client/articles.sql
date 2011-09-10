@@ -136,11 +136,14 @@ CREATE OR REPLACE FUNCTION fct_get_new_tax_vat_for_article_1(iArticleID int) ret
   
         END IF ;
     
-        IF iNewTaxVat > -1 THEN 
-            select into fTaxVat tax_vat_value from tax_vat where id = iNewTaxVat ;
-        END IF ;
+        -- IF iNewTaxVat > -1 THEN 
+        --     select into fTaxVat vat_value from tax_vat where id = iNewTaxVat ;
+        -- END IF ;
         
-        return fTaxVat ;
+        if iNewTaxVat = -1 then
+            iNewTaxVat = 0 ;
+        end if ;
+        return iNewTaxVat::float;
     END ;
     
      ' LANGUAGE 'plpgsql'; 
@@ -230,4 +233,99 @@ CREATE OR REPLACE FUNCTION  fct_duplicateArticle( iArticleID integer) returns  i
         
         return newID ;
     END ;
+    ' LANGUAGE 'plpgsql'; 
+
+    
+    
+CREATE OR REPLACE FUNCTION  fct_getSellingPricesForArticle ( iArticleID integer, iPartID integer) returns   record AS '
+
+DECLARE
+        sSql    text ;
+        rData  record ;
+        rData2  record ;
+         
+    BEGIN 
+    
+    sSql = ''select apl.quantities, sellingprice1, sellingprice2, sellingprice3, sellingprice4, 0.0::float as t1, 0.0::float as t2,0.0::float as t3,0.0::float as t4 from articles, articles_parts_list as apl  where articles.id = '' || iArticleID || '' and  articles.id = apl.part_id and apl.article_id = '' || iPartID || '' '' || fct_getWhere(2,''apl.'') ; 
+    execute(sSql) into rData ;
+    
+    if rData.sellingprice1 IS NULL then
+        rData.sellingprice1 := 0.0::float  ;
+    end if ;
+    
+    if rData.sellingprice2 IS NULL then
+        rData.sellingprice2 := 0.0::float  ;
+    end if ;
+      if rData.sellingprice3 IS NULL then
+        rData.sellingprice3 := 0.0::float  ;
+    end if ;
+      if rData.sellingprice4 IS NULL then
+        rData.sellingprice4 := 0.0::float  ;
+    end if ;
+    
+    rData.t1 =  rData.sellingprice1 * rData.quantities ;
+    rData.t2 =  rData.sellingprice2 * rData.quantities ;
+    rData.t3 =  rData.sellingprice3 * rData.quantities ;
+    rData.t4 =  rData.sellingprice4 * rData.quantities ; 
+  
+    return  rData ;
+    
+    END ;
+    
+    ' LANGUAGE 'plpgsql'; 
+
+    
+  
+CREATE OR REPLACE FUNCTION  fct_getTotalSellingPricesForArticle ( iPartID integer) returns   record AS '
+
+    DECLARE
+        sSql    text ;
+        rData  record ;
+        rData2  record ;
+        ft1 float ;
+        ft2 float ;
+        ft3 float ;
+        ft4 float ;
+        
+    BEGIN 
+     ft1 := 0.00 ;
+     ft2 := 0.00 ;
+     ft3 := 0.00 ;
+     ft4 := 0.00 ;
+     
+     
+    sSql := ''select  apl.quantities, sellingprice1, sellingprice2, sellingprice3, sellingprice4, 0.0::float as t1, 0.0::float as t2,0.0::float as t3,0.0::float as t4 from articles,  articles_parts_list as apl where articles.id = apl.part_id and apl.article_id = '' || iPartID || '' '' || fct_getWhere(2,''apl.'') ;
+    
+    raise notice '' sSql = %'', sSql ;
+    
+    FOR rData in execute(sSql) LOOP 
+    
+        if rData.sellingprice1 IS NOT NULL then
+            raise notice ''sellingprice 1 = % , %  %'', rData.sellingprice1, rData.quantities, rData.t1 ;
+            ft1 :=  ft1 + (rData.sellingprice1 * rData.quantities );
+             raise notice ''sellingprice 1 = % , % '', rData.sellingprice1, rData.t1 ;
+        end if ;
+        if rData.sellingprice2 IS NOT NULL then
+            ft2 :=  ft2 + (rData.sellingprice2 * rData.quantities );
+        end if ;
+        if rData.sellingprice3 IS NOT NULL then
+            ft3 :=  ft3 + (rData.sellingprice3 * rData.quantities );
+        end if ;
+        if rData.sellingprice4 IS NOT NULL then
+            ft4 :=  ft4 + (rData.sellingprice4 * rData.quantities );
+        end if ;
+        
+        
+        
+        
+    END LOOP ;
+    
+        rData.t1 := ft1 ;
+        rData.t2 := ft2 ;
+        rData.t3 := ft3 ;
+        rData.t4 := ft4 ;
+        
+        return  rData ;
+    END ;
+    
     ' LANGUAGE 'plpgsql'; 

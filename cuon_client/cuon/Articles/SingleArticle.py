@@ -51,7 +51,12 @@ class SingleArticle(SingleData):
     def fillOtherEntries(self, oneRecord):
         print 'oneRecord = ',  oneRecord
         self.NotesArticles.set_text(self.normalizeXML(oneRecord['articles_notes'], False) )
-        
+        dicPrices = self.rpc.callRP('Article.getTotalSellingPrices', oneRecord['id'], 0,  self.dicUser)
+        print dicPrices
+        self.getWidget('eTotalSellingPrice1').set_text(self.getCheckedValue(`dicPrices['ts1']`,  'toStringFloat'))
+        self.getWidget('eTotalSellingPrice2').set_text(self.getCheckedValue(`dicPrices['ts2']`,  'toStringFloat'))
+        self.getWidget('eTotalSellingPrice3').set_text(self.getCheckedValue(`dicPrices['ts3']`,  'toStringFloat'))
+        self.getWidget('eTotalSellingPrice4').set_text(self.getCheckedValue(`dicPrices['ts4']`,  'toStringFloat'))
         
     def clearAllOtherFields(self):
         self.NotesArticles.set_text('')
@@ -111,6 +116,8 @@ class SingleArticle(SingleData):
     def getPrice(self, Modul, iModulID, ArticleID):
         return self.rpc.callRP('Article.getPrice', Modul,iModulID, ArticleID,  self.dicUser)
         
+    def getSellingPrices(self, ArticleID,  PartID):
+        return self.rpc.callRP('Article.getSellingPrices', ArticleID,  PartID,  self.dicUser)
         
     def getArticleAssociatedWith(self):
         return self.firstRecord['associated_with']

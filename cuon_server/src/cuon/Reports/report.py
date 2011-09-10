@@ -1191,7 +1191,7 @@ class report(MyXML):
     
     def createTestSite(self, c):
         grids = []
-        for i in range(0,55):
+        for i in xrange(0,55):
             grids.append(i/2*inch)
             
         c.grid(grids, grids)

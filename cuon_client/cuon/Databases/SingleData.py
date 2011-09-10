@@ -125,7 +125,7 @@ class SingleData(gladeXml, logs):
             # print liRecords
             firstRecord = {}
             if liRecords:
-                for r in range(len(liRecords)) :
+                for r in xrange(len(liRecords)) :
                      record =  liRecords[r]
                      for key in record.keys():
                          if  isinstance(record[key], types.StringType):
@@ -148,7 +148,7 @@ class SingleData(gladeXml, logs):
                 self.sStatus = ''
                 try:
                     if self.statusfields:
-                        for i in range(len(self.statusfields)):
+                        for i in    (len(self.statusfields)):
                             self.sStatus = self.sStatus + firstRecord[self.statusfields[i]] + ', '
                 except:
                     pass
@@ -743,7 +743,10 @@ class SingleData(gladeXml, logs):
                         #print 'sValue at textview = ',  sValue
                     #elif string.count(str(widget), "GtkCombo") > 0:
                     elif string.count(str(widget), "GtkCheckButton") > 0:
-                        sValue = 1 if `widget.get_active()` else 0 
+                        print 'verify value = ',  widget.get_active()
+                      
+                        sValue = (1 if widget.get_active() else 0 )
+                      
                         print 'GtkCheckButton = ',  sValue
                         
                     elif string.count(str(widget), "GtkRadioButton") > 0:

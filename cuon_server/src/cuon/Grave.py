@@ -261,7 +261,12 @@ class Grave(xmlrpc.XMLRPC, basics):
     def xmlrpc_createAllNewInvoice(self,  dicUser,  liValues):
         print 'All Invoices',  liValues
         bOK = False
+        sSql = "select * from fct_createAllNewInvoices(" + `liValues[1]` + ") as grave_id " 
+        result =  self.oDatabase.xmlrpc_executeNormalQuery(sSql,  dicUser )
         
+        for gid in result:
+            self.xmlrpc_createNewInvoice(dicUser, liValues, gid['grave_id'])
+            
         
         return bOK
         
@@ -288,7 +293,7 @@ class Grave(xmlrpc.XMLRPC, basics):
                     if sSave:
                         dR4 = self.oDatabase.xmlrpc_saveRecord('orderbook', newOrderID, dicValues, dicUser, 'NO')
                     
-                    if i == len(allInvoices):
+                    if (i +1) == len(allInvoices):
                         
                         sSql = "select * from fct_addPositionToInvoice('" + sService + "' , " + `newOrderID` + ",1  ) as bOK "
                     else:

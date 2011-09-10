@@ -106,12 +106,24 @@ CREATE OR REPLACE FUNCTION fct_create_alltrigger()    returns bool AS '
     BEGIN
     
         vList[1] := ''address'' ;
-        vList[2] := ''partner'' ;
-        vList[3] := ''address_notes'' ;
+        vList := array_append(vList,''partner'') ;
+        vList := array_append(vList,''address_notes'') ;
+        vList := array_append(vList,''list_of_deliveries'') ;
+        vList := array_append(vList,''grave'') ;
+        vList := array_append(vList,''grave_work_maintenance'') ;
+        vList := array_append(vList,''grave_work_spring'') ;
+        vList := array_append(vList,''grave_work_summer'') ;
+        vList := array_append(vList,''grave_work_autum'') ;
+        vList := array_append(vList,''grave_work_winter'') ;
+        vList := array_append(vList,''grave_work_single'') ;
+        vList := array_append(vList,''holiday'') ;
+        vList := array_append(vList,''year'') ;
         
-        vList[4] := ''list_of_deliveries'' ;
-      
-        array_size := 4;
+        
+       
+       
+       
+        array_size := array_length(vList,1) ;
       
         for ct in 1..array_size loop
             -- raise notice '' ct = %, array = % '', ct,vList[ct] ;

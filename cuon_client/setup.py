@@ -19,7 +19,7 @@ class setup:
         self.CuonAdmin = None
         self.store = []
         self.liLocale = ['de','pt','pt_BR', 'nl', 'it', 'lv']
-        self.LocalDirs = [ "PrefsFinance" , "E_Mail" , "Calendar" ,  "Analysis" , "Login" , "Garden" , "Leasing" , "WebShop" , "Finances" , "XmlValues" , "Logging" , "Editor" , "Biblio" , "Graves" , "Order" , "Bank" , "TypeDefs" , "Proposal" , "AI" , "Web2" , "Stock" , "Preferences" ,"ReportBuilder",  "Staff" , "Windows" , "Misc" , "User" , "Project" , "Addresses" , "Stats" , "Clients" , "OpenOffice" , "Skeleton" , "DMS" , "locale" , "XMLRPC" , "XML" , "Think" , "starter" , "Articles" , "VTK" , "Help" , "Zip" , "Databases" , "Druids",  "SupportTicket"]
+        self.LocalDirs = [ "PrefsFinance" , "E_Mail" , "Calendar" ,  "Analysis" , "Login" , "Garden" , "Leasing" , "WebShop" , "Finances" , "XmlValues" , "Logging" , "Editor" , "Biblio" , "Graves" , "Order" , "Bank" , "TypeDefs" , "Proposal" , "AI" , "Web2" , "Stock" , "Preferences" ,"ReportBuilder",  "Staff" , "Windows" , "Misc" , "User" , "Project" , "Addresses" , "Stats" , "Clients" , "OpenOffice" , "Skeleton" , "DMS" , "locale" , "XMLRPC" , "XML" , "Think" , "starter" , "Articles" , "VTK" , "Help" , "Zip" , "Databases" , "Druids",  "SupportTicket", "Charts" ]
 
         self.xml = None
         self.xmlAutoconnect = False
@@ -422,7 +422,7 @@ class setup:
             + self.SERVERCONFIGDIR + "/examples/UserGroups.cfg " + self.SERVERCONFIGDIR + "/sql ;  fi ")
         # sql.xml
         # copy trigger to etc/cuon/sql
-        liFunctions = ['sql.xml',  'basics.sql', 'order.sql', 'address.sql', 'garden.sql', 'graves.sql', 'articles.sql', 'it.sql']
+        liFunctions = ['sql.xml',  'basics.sql', 'order.sql', 'address.sql', 'garden.sql', 'graves.sql', 'articles.sql', 'it.sql', 'invoice.sql']
         for oneFile in liFunctions:
             self.executeSCP(oneFile, self.SERVERCONFIGDIR + "/sql")
         

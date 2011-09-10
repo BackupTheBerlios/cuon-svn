@@ -148,7 +148,7 @@ class User(defaultValues):
         self.Email['LoginUser']='login'
         self.Email['Password']='secret'
         self.Email['Signatur']='NONE'
-        self.Email['extPrg'] = 'evolution'
+        self.Email['extPrg'] = 'thunderbird'
         self.Email['check_imap'] = False
 
         self.Email['ImapSSL']=False
@@ -167,7 +167,7 @@ class User(defaultValues):
         self.Communications = {}
         self.Communications['textChat'] = '/usr/bin/slitechat'
         self.Communications['3DChat'] = '/usr/bin/phoenix'
-        self.Communications['emailPrg'] = '/usr/bin/claws-mail'
+        self.Communications['emailPrg'] = '/usr/bin/thunderbird'
         
         
         self.prefFinances = {}

@@ -313,13 +313,22 @@ CREATE OR REPLACE FUNCTION fct_calc_all_prices_for_db(sDB text ) returns boolean
     newPrice float ;
     ok boolean ;
     BEGIN
-        sSql := ''select id, grave_id, article_id from '' || sDB || '' where automatic_price is not null and automatic_price = 1 '' || fct_getWhere(2,'''') || '' order by id '' ;
+        sSql := ''select id, grave_id, article_id, automatic_price from '' || sDB || ''  '' || fct_getWhere(1,'''') || '' order by id '' ;
         
         FOR r0 in execute(sSql) LOOP 
-            newPrice = fct_get_price_for_pricegroup(''grave'',r0.grave_id , r0.article_id )  ;
-            -- raise notice '' new price for article % , grave % = %'', r0.article_id, r0.grave_id, newPrice ;
-            sSql2 := ''update '' || sDB || '' set price = '' || newPrice || '' where id = '' || r0.id  ;
-            execute(sSql2) ;
+            if r0.automatic_price is NULL then
+                r0.automatic_price := 0 ;
+            end if ;
+            if r0.automatic_price = 1 then 
+            
+                newPrice = fct_get_price_for_pricegroup(''grave'',r0.grave_id , r0.article_id )  ;
+                -- raise notice '' new price for article % , grave % = %'', r0.article_id, r0.grave_id, newPrice ;
+                if newPrice > 0 then 
+                
+                    sSql2 := ''update '' || sDB || '' set service_price = '' || newPrice || '' where id = '' || r0.id  ;
+                    execute(sSql2) ;
+                end if ;
+            end if ;
         END LOOP ;
         ok = true ;
         return ok ;
@@ -400,9 +409,9 @@ CREATE OR REPLACE FUNCTION fct_createSingleNewInvoice(sService text , iGraveID i
     grave_part int ;
     
     BEGIN
-    
+        iNewOrderID := -1 ;
         iClient = fct_getUserDataClient(  ) ;
-         raise notice '' Client Number = %'',iClient ;
+        raise notice '' Client Number = %'',iClient ;
         grave_headline = fct_get_config_option(iClient,''clients.ini'', ''CLIENT_'' || iClient, ''order_main_headline_articles_id'') ;
         
         
@@ -440,46 +449,52 @@ CREATE OR REPLACE FUNCTION fct_createSingleNewInvoice(sService text , iGraveID i
         
         sSql := sSql || '' where graveyard.id = grave.graveyardid and grave.id = gm.grave_id and grave.id = '' || iGraveID || '' ''  || fct_getWhere(2,''grave.'') ;
         execute(sSql) into r1 ;
-        raise notice ''r1 = % '', r1.id ;
-
-        sSql := '' insert into orderbook (id,addressnumber,ready_for_invoice,pricegroup1,pricegroup2,pricegroup3,pricegroup4,pricegroup_none, orderedat, from_modul, from_modul_id,deliveredat, discount) values ('' ;
-        sSql := sSql || iNewOrderID || '', '' || iAddressID || '', true, '' || r1.pricegroup1 || '', '' || r1.pricegroup2 || '', '' || r1.pricegroup3 || '', '' || r1.pricegroup4 || '', '' || r1.pricegroup_none  ;
-        sSql := sSql || '', '' ||  quote_literal(current_date ) || '' , 40000, '' || r1.id || '', ''  ||  quote_literal(current_date)  || '', '' || iDiscount  || '' ) ''  ;
         
-        
-        raise notice '' new sSql insert = % '', sSql ;
-        
-        
-        execute (sSql) ;    
-        
-        select into last_position max(position) from orderposition where orderid = iNewOrderID ;
-        if last_position IS NULL then 
-            last_position = 0 ;
-        end if ;
-        
-        
-        
-        if iDiscount > 0 THEN 
-             grave_part = fct_get_config_option(iClient,''clients.ini'', ''CLIENT_'' || iClient , ''order_part_id'') ;
-              last_position := last_position + 1 ;
-               sSql := ''insert into orderposition ( id, orderid , articleid , designation, amount  ,  position, price)  values (  (select nextval(''''orderposition_id'''') ) , '' ;
-        sSql := sSql ||  iNewOrderID || '', '' || grave_part ||  '', '' || quote_literal(iDiscount || ''%'') || '', '' || 1   || '', '' || last_position  || '', 0 ) '' ;
-        raise notice ''SQL for Discount %'' , sSql ;
-          execute (sSql) ; 
-        END IF ;
+        if r1.id is null then 
+            
+            return  iNewOrderID;
+        else 
+            raise notice ''r1 = % '', r1.id ;
+    
+            sSql := '' insert into orderbook (id,addressnumber,ready_for_invoice,pricegroup1,pricegroup2,pricegroup3,pricegroup4,pricegroup_none, orderedat, from_modul, from_modul_id,deliveredat, discount) values ('' ;
+            sSql := sSql || iNewOrderID || '', '' || iAddressID || '', true, '' || r1.pricegroup1 || '', '' || r1.pricegroup2 || '', '' || r1.pricegroup3 || '', '' || r1.pricegroup4 || '', '' || r1.pricegroup_none  ;
+            sSql := sSql || '', '' ||  quote_literal(current_date ) || '' , 40000, '' || r1.id || '', ''  ||  quote_literal(current_date)  || '', '' || iDiscount  || '' ) ''  ;
+            
+            
+            raise notice '' new sSql insert = % '', sSql ;
+            
+            
+            execute (sSql) ;    
+            
+            select into last_position max(position) from orderposition where orderid = iNewOrderID ;
+            if last_position IS NULL then 
+                last_position = 0 ;
+            end if ;
+            
+            
+            
+            if iDiscount > 0 THEN 
+                 grave_part = fct_get_config_option(iClient,''clients.ini'', ''CLIENT_'' || iClient , ''order_part_id'') ;
+                  last_position := last_position + 1 ;
+                   sSql := ''insert into orderposition ( id, orderid , articleid , designation, amount  ,  position, price)  values (  (select nextval(''''orderposition_id'''') ) , '' ;
+            sSql := sSql ||  iNewOrderID || '', '' || grave_part ||  '', '' || quote_literal(iDiscount || ''%'') || '', '' || 1   || '', '' || last_position  || '', 0 ) '' ;
+            raise notice ''SQL for Discount %'' , sSql ;
+              execute (sSql) ; 
+            END IF ;
+                 
+            grave_headline_designation := r1.lastname || '', Nr: '' || r1.detachment || '' / '' || r1.grave_number || '',  '' || r1.graveyard_shortname ;
+             last_position := last_position + 1 ;
              
-        grave_headline_designation := r1.lastname || '', Nr: '' || r1.detachment || '' / '' || r1.grave_number || '',  '' || r1.graveyard_shortname ;
-         last_position := last_position + 1 ;
-         
-         
-        sSql := ''insert into orderposition ( id, orderid , articleid , designation, amount  ,  position, price)  values (  (select nextval(''''orderposition_id'''') ) , '' ;
-        sSql := sSql ||  iNewOrderID || '', '' || grave_headline ||  '', '' || quote_literal(grave_headline_designation) || '', '' || 1   || '', '' || last_position  || '', 0 ) '' ;
-        raise notice ''SQL for headline %'' , sSql ;
-          execute (sSql) ;  
-         
-       
-        
-        return  iNewOrderID;
+             
+            sSql := ''insert into orderposition ( id, orderid , articleid , designation, amount  ,  position, price)  values (  (select nextval(''''orderposition_id'''') ) , '' ;
+            sSql := sSql ||  iNewOrderID || '', '' || grave_headline ||  '', '' || quote_literal(grave_headline_designation) || '', '' || 1   || '', '' || last_position  || '', 0 ) '' ;
+            raise notice ''SQL for headline %'' , sSql ;
+              execute (sSql) ;  
+             
+           
+            
+            return  iNewOrderID;
+        end if ;
         
     END ;
     
@@ -491,7 +506,6 @@ CREATE OR REPLACE FUNCTION fct_createSingleNewInvoice(sService text , iGraveID i
       
   
  
-DROP FUNCTION IF EXISTS      fct_addPositionToInvoice(text,int) ;
 CREATE OR REPLACE FUNCTION fct_addPositionToInvoice(sService text , iNewOrderID int, iLastOrder int ) returns boolean AS '
  DECLARE
   
@@ -501,6 +515,7 @@ CREATE OR REPLACE FUNCTION fct_addPositionToInvoice(sService text , iNewOrderID 
     sSql3 text ;
     sSql4 text ;
     sSql5 text ;
+    sSql_date text ;
     r1 record ;
     r2 record ;
     ok boolean ;
@@ -509,9 +524,12 @@ CREATE OR REPLACE FUNCTION fct_addPositionToInvoice(sService text , iNewOrderID 
     article_headline int ;
     article_headline_designation text ;
     fTaxVat float ;
-    
+    existID int ;
+    article_designation text ;
     BEGIN
+    sSql_date := '' '' ;
         ok := true ;
+        existID := -1 ;
          iClient = fct_getUserDataClient(  ) ;
          raise notice '' Client Number = %'',iClient ;
          
@@ -554,19 +572,7 @@ CREATE OR REPLACE FUNCTION fct_addPositionToInvoice(sService text , iNewOrderID 
             sSql2 := '' update grave_work_spring set created_order = 1 where id = ''  ;     
             
         
-          ELSEIF sService = ''Spring'' THEN
-           article_headline = fct_get_config_option(iClient,''clients.ini'', ''CLIENT_'' || iClient, ''order_spring_headline_articles_id'') ;
-            -- raise notice '' article headline = %'', article_headline ;
-            
-           IF article_headline IS NOT NULL THEN 
-               sSql4 := ''select designation from articles where id = '' || article_headline ;
-               
-               execute(sSql4) into article_headline_designation ;
-               
-            END IF ;
-            
-            sSql := sSql || ''grave_work_spring as gm '' ;
-            sSql2 := '' update grave_work_spring set created_order = 1 where id = ''  ;     
+         
             
             ELSEIF sService = ''Summer'' THEN
             article_headline = fct_get_config_option(iClient,''clients.ini'', ''CLIENT_'' || iClient, ''order_summer_headline_articles_id'') ;
@@ -638,7 +644,7 @@ CREATE OR REPLACE FUNCTION fct_addPositionToInvoice(sService text , iNewOrderID 
             
             sSql := sSql || ''grave_work_single as gm '' ;
             sSql2 := '' update grave_work_single set created_order = 1 where id = ''  ;     
-            
+            sSql_date := '' and gm.unique_date < now() '' ;
             
           ELSEIF sService = ''Yearly'' THEN
            article_headline = fct_get_config_option(iClient,''clients.ini'', ''CLIENT_'' || iClient, ''order_Yearly_headline_articles_id'') ;
@@ -653,59 +659,82 @@ CREATE OR REPLACE FUNCTION fct_addPositionToInvoice(sService text , iNewOrderID 
             
             sSql := sSql || ''grave_work_year as gm '' ;
             sSql2 := '' update grave_work_year set created_order = 1 where id = ''  ;     
-                
+            sSql_date := '' and to_date(gm.annual_day || ''''-'''' || gm.annual_month || ''''-'''' ||  EXTRACT(YEAR FROM  now()) ,''''DD-MM-YYYY'''' ) < now() '' ;    
         end if ;
         
         
        
         sSql := sSql || '' where grave_id = '' || igrave_id ;
+        sSql := sSql || sSql_date ;
         sSql := sSql || '' ''  || fct_getWhere(2,'''') ;
         
         raise notice '' fetch positions  sSql = % '', sSql ;
-        
-        select into last_position max(position) from orderposition where orderid = iNewOrderID ;
-        
-        if last_position IS NULL then 
-            last_position = 0 ;
-        end if ;
-         last_position := last_position + 1 ;
-         
-           sSql5 := ''insert into orderposition ( id, orderid , articleid , designation, amount  ,  position, price)  values (  (select nextval(''''orderposition_id'''') ) , '' ;
-            sSql5 := sSql5 ||  iNewOrderID || '', '' || article_headline ||  '', '' ||  quote_literal('''') || '', '' || 1   || '', '' || last_position  || '' ,0 ) '' ;
-          execute (sSql5) ;  
-          
-          
-        raise notice '' look at r1 for position   sSql = % '', sSql ;
         FOR r1 in execute(sSql)  LOOP
-            if r1.created_order is null then
-                r1.created_order = 0 ;
-            end if ;
-            if r1.created_order = 0 then
-                IF r1.service_price IS NULL THEN
-                    r1.service_price = 0 ;
-                END IF ;
-                IF r1.service_price = 0  THEN
-                    r1.service_price := fct_get_price_for_pricegroup(  ''orderposition'', iNewOrderID, r1.article_id)  ;
-                END IF;
-                
-                last_position := last_position + 1 ;
-                fTaxVat := fct_get_new_tax_vat_for_article_1(r1.article_id);
-                
-                sSql4 := ''insert into orderposition ( id, orderid , articleid , designation, amount  ,  position , price, tax_vat ) values (  (select nextval(''''orderposition_id'''') ) , '' ;
-                sSql4 := sSql4 ||  iNewOrderID || '', '' || r1.article_id ||  '', '''''' || '''' || '''''', '' || r1.service_count   || '', '' || last_position ;
-                sSql4 := sSql4 || '', '' || r1.service_price || '', '' || fTaxVat || '' ) '' ;
-                raise notice '' insert position sSql4 = % '', sSql4 ;
-                execute (sSql4) ;
-                IF iLastOrder = 1 THEN
-                    sSql3 := sSql2 || r1.id ;
-                    raise notice '' update = % '', sSql3 ;
-                    execute(sSql3);
-                END IF ;
-                
-            end if ;
+            existID := existID + r1.id ;
         END LOOP ;
+          
+        if existID > -1 then
+            select into last_position max(position) from orderposition where orderid = iNewOrderID ;
             
-        
+            if last_position IS NULL then 
+                last_position = 0 ;
+            end if ;
+             last_position := last_position + 1 ;
+             
+               sSql5 := ''insert into orderposition ( id, orderid , articleid , designation, amount  ,  position, price)  values (  (select nextval(''''orderposition_id'''') ) , '' ;
+                sSql5 := sSql5 ||  iNewOrderID || '', '' || article_headline ||  '', '' ||  quote_literal('''') || '', '' || 1   || '', '' || last_position  || '' ,0 ) '' ;
+              execute (sSql5) ;  
+              
+              
+            raise notice '' look at r1 for position   sSql = % '', sSql ;
+            FOR r1 in execute(sSql)  LOOP
+                if r1.created_order is null then
+                    r1.created_order = 0 ;
+                end if ;
+                if r1.created_order = 0 then
+                    IF r1.service_price IS NULL THEN
+                        r1.service_price = 0 ;
+                    END IF ;
+                    IF r1.service_price = 0  THEN
+                        r1.service_price := fct_get_price_for_pricegroup(  ''orderposition'', iNewOrderID, r1.article_id)  ;
+                    END IF;
+                    if r1.service_designation is null then 
+                        article_designation := '''' ;
+                    else 
+                        article_designation := r1.service_designation ;
+                    end if ;
+                    
+                    -- select into article_designation designation from articles where id = r1.article_id ;
+                    IF sService = ''Unique'' THEN
+                        article_designation := article_designation || '' / '' || to_char(r1.unique_date,''DD.MM.YYYY'' ) ;
+                    end if ;
+                      IF sService = ''Yearly'' THEN
+                        article_designation := article_designation || '' / '' || r1.annual_day ||''.'' ||  r1.annual_month ;
+                    end if ;
+                    if article_designation is null then 
+                        article_designation := '''' ;
+                    end if ;
+                    
+                    last_position := last_position + 1 ;
+                    fTaxVat := fct_get_new_tax_vat_for_article_1(r1.article_id);
+                    
+                    sSql4 := ''insert into orderposition ( id, orderid , articleid , designation, amount  ,  position , price, tax_vat ) values (  (select nextval(''''orderposition_id'''') ) , '' ;
+                    sSql4 := sSql4 ||  iNewOrderID || '', '' || r1.article_id ||  '', '''''' || article_designation || '''''', '' || r1.service_count   || '', '' || last_position ;
+                    sSql4 := sSql4 || '', '' || r1.service_price || '', '' || fTaxVat || '' ) '' ;
+                    raise notice '' insert position sSql4 = % '', sSql4 ;
+                    execute (sSql4) ;
+                    
+                    if iLastOrder = 1 then 
+                        sSql3 := sSql2 || r1.id ;
+                        raise notice '' update = % '', sSql3 ;
+                        execute(sSql3);
+                    end if ;
+                    
+                    
+                end if ;
+            END LOOP ;
+            
+        end if ;
         return ok;
         
     END ;
@@ -714,5 +743,36 @@ CREATE OR REPLACE FUNCTION fct_addPositionToInvoice(sService text , iNewOrderID 
     
      ' LANGUAGE 'plpgsql'; 
      
+     
+         
+CREATE OR REPLACE FUNCTION fct_createAllNewInvoices(cash_id int)returns setof int AS '
+ DECLARE
+ 
+        igrave_id int ;
+        sSql text ;
+        r1 record ;
+        
+    BEGIN
+    
+        sSql := ''select id, type_of_paid from grave where (created_order is NULL or created_order = 0) and (contract_ends_at IS NULL or contract_ends_at > now()) '';
+        FOR r1 in execute(sSql)  LOOP
+            if r1.type_of_paid is null then 
+                r1.type_of_paid = -1 ;
+            end if ;
+            
+            if cash_id < 0 then 
+                return next r1.id ;
+            else 
+                if r1.type_of_paid = cash_id then 
+                    return next r1.id ;
+                end if ;
+            end if ;
+            
+        END LOOP ;
+        
+        
+ 
+    END ;
+     ' LANGUAGE 'plpgsql'; 
      
      

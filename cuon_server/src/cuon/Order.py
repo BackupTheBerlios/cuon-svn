@@ -479,7 +479,7 @@ class Order(xmlrpc.XMLRPC, basics):
                             i['articles_notes'] = ''
         except Exception,  params:
             
-            self.writeLog('Error at getStandardInvoice = ' + Exception + ',  ' + params )
+            self.writeLog('Error at getStandardInvoice = ' + `Exception` + ',  ' + `params` )
         return result2
         
 
@@ -990,7 +990,7 @@ class Order(xmlrpc.XMLRPC, basics):
         liSql.append({'id':'century','sql':'century','logic':'='})
         sSql = "select now(), "
         for vSql in liSql:
-            for z1 in range(0,30):
+            for z1 in xrange(0,30):
                 if vSql['id'] == 'decade' and z1 > iDecade:
                     pass
                 elif vSql['id'] == 'century' and z1 > iCentury:
@@ -1124,7 +1124,7 @@ class Order(xmlrpc.XMLRPC, basics):
                     sSql = "select '" + caller_name + "' as caller_name_" + caller + " ,"
                     print sSql
                     for vSql in liSql:
-                        for z1 in range(0,30):
+                        for z1 in xrange(0,30):
                             if vSql['id'] == 'decade' and z1 > iDecade:
                                 pass
                             elif vSql['id'] == 'century' and z1 > iCentury:

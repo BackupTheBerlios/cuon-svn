@@ -43,7 +43,7 @@ class rawWindow( gladeXml):
     def getConfigOption(self, section, option):
         value = None
         if self.cpParser.has_option(section,option):
-            value = self.cpParser.get(section, option)
+            value = self.cpParser.get(section, option).strip()
             print 'getConfigOption', section + ', ' + option + ' = ' + value
         return value   
         

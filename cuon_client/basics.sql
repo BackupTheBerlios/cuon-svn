@@ -426,3 +426,17 @@ CREATE OR REPLACE  FUNCTION   fct_get_config_option(iClientID int,sFile varchar(
 
     
     ' LANGUAGE 'plpgsql';
+
+ 
+CREATE OR REPLACE   FUNCTION   fct_round_2_digits(value float)  RETURNS float AS ' 
+    DECLARE 
+        retValue float ;
+    BEGIN 
+        select into retValue  round(value::numeric,2);
+        return retValue ;
+        
+    END; 
+
+    
+    ' LANGUAGE 'plpgsql';
+    

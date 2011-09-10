@@ -41,8 +41,8 @@ class export_generic1(fileSelection):
         #self.dicFileAttributes['allTables'] = allTables
         self.rpc = cuon.XMLRPC.xmlrpc.myXmlRpc()
         self.iColumns = 0
-        
-          
+        self.dicFileAttributes['Decoding'] = None
+        self.dicFileAttributes['Encoding'] = None
          
                                
 
@@ -53,7 +53,9 @@ class export_generic1(fileSelection):
         self.dicFileAttributes['exportHeader'] = None
         self.dicFileAttributes['inputType'] = 'Standard'
         self.dicFileAttributes['liColumns'] = None
-        self.dicFileAttributes['decodeData'] = None
+        self.dicFileAttributes['Decoding'] = None
+        self.dicFileAttributes['Encoding'] = None
+        
         self.dicFileAttributes['extraFunction'] = None
         
         try:
@@ -79,11 +81,12 @@ class export_generic1(fileSelection):
         
         self.dicFileAttributes['splitValue'] = self.getConfigOption('Values', 'Split')
         self.dicFileAttributes['Encoding'] = self.getConfigOption('Values', 'Encoding')
+        self.dicFileAttributes['Decoding'] = self.getConfigOption('Values', 'Decoding')
         self.dicFileAttributes['fromChangedValue'] = None
         self.dicFileAttributes['toChangedValue'] = ''
         self.dicFileAttributes['printHeader'] = self.getConfigOption('Values', 'print_header')
         self.dicFileAttributes['stringDelimit'] = self.getConfigOption('Values', 'string_delimit')
-        
+        self.dicFileAttributes['changeFloat'] = self.getConfigOption('Values', 'change_float')
         self.dicFileAttributes['exportHeader'] 
       
         print 'dicFileAttributes'
@@ -142,9 +145,19 @@ class export_generic1(fileSelection):
                     if aRow.find('.') >=0:
                         aRow = aRow[aRow.find('.'):]
                     print 'column',  iOneExport, aColumn
-                    if  isinstance(oneExport[aRow], types.StringType):
+                    if  isinstance(oneExport[aRow], types.StringType) or isinstance(oneExport[aRow], types.UnicodeType):
+                        if self.dicFileAttributes['Decoding']:
+                            oneExport[aRow] = oneExport[aRow].decode(self.dicFileAttributes['Decoding'])
+                            print 'Decoding = ', self.dicFileAttributes['Decoding'],   oneExport[aRow]
+                        if self.dicFileAttributes['Encoding']:
+                            oneExport[aRow] = oneExport[aRow].encode(self.dicFileAttributes['Encoding'])
+                            print 'Encoding = ', self.dicFileAttributes['Encoding'],   oneExport[aRow]
                         if self.dicFileAttributes['stringDelimit']:
                             oneExport[aRow] = self.dicFileAttributes['stringDelimit'] + oneExport[aRow]+ self.dicFileAttributes['stringDelimit']
+                    elif  isinstance(oneExport[aRow], types.FloatType):
+                        if self.dicFileAttributes['changeFloat']:
+                            oneExport[aRow] =  `oneExport[aRow]`
+                            oneExport[aRow] = oneExport[aRow].replace('.', self.dicFileAttributes['changeFloat'])
                     else:
                         oneExport[aRow] = `oneExport[aRow]`
                         

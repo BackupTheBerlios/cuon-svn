@@ -40,7 +40,7 @@ class SingleDataTreeModel:
             iter = self.store.append()
             #            store.set(iter, COLUMN_NAME, item[0], COLUMN_ZIPCODE, item[1], COLUMN_CITY, item[2], COLUMN_STREET, item[3], COLUMN_ID, item[4] )
             iLen = len(item)
-            for i in range(iLen):
+            for i in xrange(iLen):
                 self.store.set(iter,i, item[i] )
                             
         self.store.connect("rows-reordered", self.store_reordered)

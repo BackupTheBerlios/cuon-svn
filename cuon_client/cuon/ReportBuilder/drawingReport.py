@@ -239,8 +239,8 @@ class drawingReport(gladeXml):
 
     def draw_rgb_image(self, x, y):
         b = 80*3*80*['\0']
-        for i in range(80):
-            for j in range(80):
+        for i in xrange(80):
+            for j in xrange(80):
                 b[3*80*i+3*j] = chr(255-3*i)
                 b[3*80*i+3*j+1] = chr(255-3*abs(i-j))
                 b[3*80*i+3*j+2] = chr(255-3*j)

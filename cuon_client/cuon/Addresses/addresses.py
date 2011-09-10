@@ -1,4 +1,4 @@
- # -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 
 ##Copyright (C) [2003 -2007]  [Jürgen Hamel, D-32584 Löhne]
 

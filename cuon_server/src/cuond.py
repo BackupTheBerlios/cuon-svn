@@ -79,12 +79,12 @@ def writeConfigfile():
 #        </group>
 #     </service>
 #   
-# 	<admin>
-# 	   <web listen="localhost:7001" enable="true"/>
-#	<ssh listen="localhost:7002" enable="true"/>
-# 	   <user name="admin" password="..xpoEyRReGzk" access="full"/>
-#		
-# 	 </admin>
+#   <admin>
+#      <web listen="localhost:7001" enable="true"/>
+#   <ssh listen="localhost:7002" enable="true"/>
+#      <user name="admin" password="..xpoEyRReGzk" access="full"/>
+#       
+#    </admin>
 # </config>
 
     print 'write'
@@ -92,7 +92,7 @@ def writeConfigfile():
     
     if baseSettings.XMLRPC_ALLOW_HTTP:
         s += '\n\t<service name="cuon_http">\n\t\t<listen ip="' + baseSettings.XMLRPC_HOST + ':7000"/>\n\t\t\t<group name="server_xmlrpc" scheduler="roundr" enable="true">'
-        for i in range (0, iXMLRPC):
+        for i in range (1, iXMLRPC+1):
             addPort = iPort *i
         
             s += '\n\t\t\t\t<host name="server_http_' + `i` + '" ip="' +  baseSettings.XMLRPC_HOST + ':' + `baseSettings.XMLRPC_HTTP_PORT + addPort`+ '"/>'
@@ -102,7 +102,7 @@ def writeConfigfile():
     if baseSettings.XMLRPC_PROTO.upper() == 'HTTPS':
 
         s += '\n\t<service name="cuon_https">\n\t\t<listen ip="' + baseSettings.XMLRPC_HOST + ':7500"/>\n\t\t\t<group name="server_xmlrpc_https" scheduler="roundr" enable="true">'
-        for i in range (0, iXMLRPC):
+        for i in range (1, iXMLRPC+1):
             addPort = iPort *i
             s += '\n\t\t\t\t<host name="server_https_' + `i` + '" ip="' +  baseSettings.XMLRPC_HOST + ':' + `baseSettings.XMLRPC_HTTPS_PORT + addPort`+ '"/>'
             
@@ -116,7 +116,7 @@ def writeConfigfile():
     
     s+= '\n\t\t\t</group>\n\t\t</service>'
     
-    s+= '	\n\t<admin>  \n\t\t<web listen="localhost:7001" enable="true"/> \n\t\t<ssh listen="localhost:7002" enable="true"/> \n\t\t<user name="admin" password="' + baseSettings.INSTANCES_PASSWORD + '" access="full"/>\n\t</admin> \n</config>'
+    s+= '   \n\t<admin>  \n\t\t<web listen="localhost:7001" enable="true"/> \n\t\t<ssh listen="localhost:7002" enable="true"/> \n\t\t<user name="admin" password="' + baseSettings.INSTANCES_PASSWORD + '" access="full"/>\n\t</admin> \n</config>'
     
         
     f = open(lb_path + '/etc/config.xml', 'w')
@@ -173,7 +173,7 @@ if sStart in ['START', 'RESTART', 'RELOAD']:
     print 'iXMLRPC,  iREPORT = ',  iXMLRPC,  iREPORT
     if iXMLRPC > 1 or iREPORT > 1:
         print 'load balance starting'
-        for i in range(0, iXMLRPC):
+        for i in range(1, iXMLRPC+1):
             startXmlRpc(iPort *i)
         for i in range(1, iREPORT + 1 ):    
             startReport(iPort *i)

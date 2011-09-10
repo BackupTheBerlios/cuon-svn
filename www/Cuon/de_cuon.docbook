@@ -249,7 +249,7 @@ Im Linux Startverzeichnis sollten jetzt 3 wichtige cuon Startscripte liegen. Die
 <para>Um bei einem Neustart ein automatisches Hochfahren aller ben&ouml;tigten Programme zu gew&auml;hrleisten kann man mit dem Programm rcconf diese Programmstarts auch schnell einrichten (bitte nicht vergessen die Datenbank postgresql zu starten).</para>
  </sect2>
 
- <sect2 id="opt_files"><title>Optionale Programme</title>
+ <sect2 id="opt_files"><title>Optionale Programme f&uuml;r den Server</title>
  <sect3 id="opt_text"><title>Texterkennung</title>
 <tip><para>Zus&auml;tzlich empfiehlt es sich, diese optionalen Programme zu installieren.Sie dienen zur Texterkennung, Textumwandlung und dem Zusammenfassen von Text:</para></tip>
 <itemizedlist>
@@ -271,6 +271,11 @@ Im Linux Startverzeichnis sollten jetzt 3 wichtige cuon Startscripte liegen. Die
 <para>Der Zugangsport f&uuml;r Cuon ist dann von 7080 auf 7000 zu setzen, bzw. f&uuml;r HTTPS von 7580 auf 7500 .</para>
 </sect3>
 </sect2>
+<sect2 id="opt_files_client"><title>Optionale Programme f&uuml;r den Client</title>
+<para>Die Python Bibliothek matplotlib</para>
+
+</sect2>
+
 </sect1>
 <sect1 id="t9_u1"><title>Der C.U.O.N. Client </title>
 <sect2 id="t9"><title>Client starten </title>
@@ -550,6 +555,13 @@ Notes0_ID: 17 ID des Dokuments aus dem DMS
 AdditinalEmailAddressesNotes?0: jh@&hellip; zus&auml;tzliche Empf&auml;nger, mit , getrennt
 sendMailsNotes0: caller,rep,salesman interne Benachrichtigung f&uuml;r 
 Kontakter, Repr&auml;sentanten und Beratern
+
+Gruppennamen f&uuml;r DMS und andere Berechtigungen
+
+GroupNameInvoice:Rechnung
+GroupNameOrder:Auftrag
+GroupNameProposal:Angebot
+
 Default Zahlungsbedingung 
 
 modul_order_default_top:ID

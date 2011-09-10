@@ -120,7 +120,7 @@ class SQL(xmlrpc.XMLRPC, basics):
             
                    
                 
-                    for i in range(len(dicResult)):
+                    for i in xrange(len(dicResult)):
                         for j in dicResult[i].keys():
                     
                             try:

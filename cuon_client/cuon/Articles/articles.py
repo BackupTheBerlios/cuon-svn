@@ -592,17 +592,31 @@ class articleswindow(chooseWindows):
         print 'eArticle changed'
        
         iArtNumber = self.getChangedValue('ePartsArticleID')
+        iPartNumber = self.singleArticle.ID 
         
         eArtField = self.getWidget('ePartsArticleDesignation')
         eArtNumber = self.getWidget('ePartsArticleNumber')
         #liArt = self.singleArticleForParts.getArticle(iArtNumber)
         #self.setTextbuffer(eArtField,liArt)
+        dicPrices = self.singleArticleForParts.getSellingPrices(iArtNumber, iPartNumber)
+        print 'Prices for ',  iArtNumber,  iPartNumber,  dicPrices 
         if iArtNumber and iArtNumber > 0:
             eArtField.set_text(self.singleArticleForParts.getArticleDesignation(iArtNumber))
             eArtNumber.set_text(self.singleArticleForParts.getArticleNumber(iArtNumber))
         else:
             eArtField.set_text('')
             eArtNumber.set_text('')
+        if len(dicPrices) == 9:
+            self.getWidget('eArticlePriceI').set_text(self.getCheckedValue(`dicPrices['s1']`,  'toStringFloat'))
+            self.getWidget('eArticlePriceII').set_text(self.getCheckedValue(`dicPrices['s2']`,  'toStringFloat'))
+            self.getWidget('eArticlePriceIII').set_text(self.getCheckedValue(`dicPrices['s3']`,  'toStringFloat'))
+            self.getWidget('eArticlePriceIV').set_text(self.getCheckedValue(`dicPrices['s4']`,  'toStringFloat'))
+            
+            self.getWidget('eArticleTotalPriceI').set_text(self.getCheckedValue(`dicPrices['ts1']`,  'toStringFloat'))
+            self.getWidget('eArticleTotalPriceII').set_text(self.getCheckedValue(`dicPrices['ts2']`,  'toStringFloat'))
+            self.getWidget('eArticleTotalPriceIII').set_text(self.getCheckedValue(`dicPrices['ts3']`,  'toStringFloat'))
+            self.getWidget('eArticleTotalPriceIV').set_text(self.getCheckedValue(`dicPrices['ts4']`,  'toStringFloat'))
+
         
     # search button Parts List
     def on_bPLSearch_clicked(self, event):

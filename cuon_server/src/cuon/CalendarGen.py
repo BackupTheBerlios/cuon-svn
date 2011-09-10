@@ -323,7 +323,7 @@ def drawGrid(c, year, month, width, height):
 
     # calculate longest day string
     num_w = 0
-    for n in range(31):
+    for n in xrange(31):
         nw = c.stringWidth(str(n+1), numfont, numsize)
         if nw > num_w:
             num_w = nw
