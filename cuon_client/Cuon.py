@@ -192,6 +192,9 @@ If the disclaimer of warranty and limitation of liability provided above cannot 
 
 END OF TERMS AND CONDITIONS
 '''
+# fix a bug in uuid, import it first !!
+
+import uuid
 
 import os
 import sys
@@ -314,7 +317,7 @@ class MainWindow(windows):
         
         windows.__init__(self)
         self.sStartType = sT
-        self.Version = {'Major': 11, 'Minor': 9, 'Rev': 10, 'Species': 0, 'Maschine': 'Linux,BSD,Windows,Mac'}
+        self.Version = {'Major': 11, 'Minor': 9, 'Rev': 25, 'Species': 0, 'Maschine': 'Linux,BSD,Windows,Mac'}
         
         self.sTitle =  `self.Version['Major']` + '.' + `self.Version['Minor']` + '.' + `self.Version['Rev']` 
         self.t0 = None

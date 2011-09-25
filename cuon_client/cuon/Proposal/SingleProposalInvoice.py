@@ -15,14 +15,14 @@ from cuon.Databases.SingleData import SingleData
 import logging
 import threading
 
-class SingleOrderInvoice(SingleData):
+class SingleProposalInvoice(SingleData):
 
     
     def __init__(self, allTables):
 
         SingleData.__init__(self)
         # tables.dbd and address
-        self.sNameOfTable =  "orderinvoice"
+        self.sNameOfTable =  "proposalinvoice"
         self.xmlTableDef = 0
         self.loadTable(allTables)
 

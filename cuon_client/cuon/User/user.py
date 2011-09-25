@@ -74,7 +74,8 @@ class User(defaultValues):
         self.contact_id = 0
         
         self.prefPath['tmp'] =  os.path.normpath(self.td.cuon_path) + '/'  
-
+        self.prefPath['pwd'] =  os.path.normpath(self.td.cuon_path) + '/work' 
+        self.prefPath['templates'] =  os.path.normpath(self.td.cuon_path) + '/work/templates'
         self.prefPath['StandardInvoice1'] =  os.path.normpath(self.td.cuon_path + '/' +  'Invoice' )
         self.prefPath['StandardSupply1'] =  os.path.normpath(self.td.cuon_path + '/' +  'Delivery' )
         self.prefPath['StandardPickup1'] =  os.path.normpath(self.td.cuon_path + '/' +  'Pickup' )
@@ -140,7 +141,11 @@ class User(defaultValues):
         self.prefDMS['fileformat'] = {}
         self.setFileFormats()
         self.Email = {}
-
+       
+        
+        self.Email['sendInvoice'] = False
+        self.Email['sendSupply'] = False
+        self.Email['sendGet'] = False
         self.Email['SSL']=False
         self.Email['From']='MyAddress@mail_anywhere.com'
         self.Email['Host']='mail_anywhere.com'
@@ -431,6 +436,7 @@ class User(defaultValues):
         self.dicUser['DateTimeformatEncoding'] = self.userDateTimeFormatEncoding
         self.dicUser['TimeformatString'] = self.userTimeFormatString
         self.dicUser['TimeOffset'] = self.userTimeOffset
+
        
         
         
@@ -549,8 +555,26 @@ class User(defaultValues):
 ##        self.Email['LoginUser']='login'
 ##        self.Email['Password']='secret'
 ##        self.Email['Signatur']='NONE'
-
-
+            print 'User set email values: ',  result['user_mail_supply']  
+            if result['user_mail_pickup'] in ['t', True, 'T', 'true']:
+                self.Email['sendGet'] = True
+            else:
+                self.Email['sendGet'] = False
+                
+            if result['user_mail_supply'] in ['t', True, 'T', 'true']:
+                 
+                self.Email['sendSupply'] = True
+                print 'Set sendSupply totrue,  ', self.Email['sendSupply']
+            else:
+                self.Email['sendSupply'] = False
+                
+            if result['user_mail_invoice'] in ['t', True, 'T', 'true']:
+                self.Email['sendInvoice'] = True
+            else:
+                self.Email['sendInvoice'] = False
+                    
+           
+            
             self.Email['From'] = result['email_user_address']
             self.Email['Host'] = result['email_user_host']
             self.Email['Port'] = result['email_user_port']

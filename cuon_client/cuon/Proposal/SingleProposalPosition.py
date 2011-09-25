@@ -21,14 +21,14 @@ import gobject
 #from gtk import TRUE, FALSE
 
 
-class SingleOrderPosition(SingleData):
+class SingleProposalPosition(SingleData):
 
     
     def __init__(self, allTables):
 
         SingleData.__init__(self)
         # tables.dbd and address
-        self.sNameOfTable =  "orderposition"
+        self.sNameOfTable =  "proposalposition"
         self.xmlTableDef = 0
         # self.loadTable()
         # self.saveTable()
@@ -46,7 +46,7 @@ class SingleOrderPosition(SingleData):
 
             
     def readNonWidgetEntries(self, dicValues):
-        print 'readNonWidgetEntries(self) by SinglePartner'
+        print 'readNonWidgetEntries(self) by SingleProposalPosition'
         dicValues['orderID'] = [self.orderID, 'int']
         return dicValues
 

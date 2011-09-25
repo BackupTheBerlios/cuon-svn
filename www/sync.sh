@@ -2,7 +2,7 @@
 
 cd en_Cuon
 
-docbook2html en_cuon.docbook && docbook2pdf en_cuon.docbook
+docbook2html en_cuon.docbook && docbook2tex en_cuon.docbook && pdfjadetex en_cuon.tex
 
 cd ..
 
@@ -10,7 +10,7 @@ cd Cuon
 
 cp cuon.docbook de_cuon.docbook
 recode -d utf-8..h4 de_cuon.docbook
-docbook2html de_cuon.docbook && docbook2pdf de_cuon.docbook
+docbook2html de_cuon.docbook && docbook2tex de_cuon.docbook && pdfjadetex de_cuon.tex
 
 cd ..
 

@@ -22,6 +22,13 @@ import gobject
 
 from cuon.Order.order import orderwindow
 
+import SingleProposal
+import SingleProposalSupply
+import SingleProposalGet
+import SingleProposalPosition
+import SingleProposalPayment
+import SingleProposalMisc
+
 
 class proposalwindow(orderwindow):
     """
@@ -38,6 +45,13 @@ class proposalwindow(orderwindow):
         
         orderwindow.__init__(self, allTables,  orderid=-555)
         
+         
+        self.singleOrder = SingleProposal.SingleProposal(allTables)
+        self.singleOrderSupply = SingleProposalSupply.SingleProposalSupply(allTables)
+        self.singleOrderGet = SingleProposalGet.SingleProposalGet(allTables)
+        self.singleOrderPosition = SingleProposalPosition.SingleProposalPosition(allTables)
+        self.singleOrderMisc = SingleProposalMisc.SingleProposalMisc(allTables)
+        self.singleOrderPayment = SingleProposalPayment.SingleProposalPayment(allTables)
         
         self.dicOrder = dicOrder
         self.fillArticlesNewID = 0
@@ -108,7 +122,7 @@ class proposalwindow(orderwindow):
         self.loadEntries(self.EntriesOrderPosition)
         self.singleOrderPosition.setEntries(self.getDataEntries(self.EntriesOrderPosition) )
         self.singleOrderPosition.setGladeXml(self.xml)
-        self.singleOrderPosition.setTreeFields( ['position','amount','articleid','articles.number as arnumber','articles.designation as ardsesignation', 'orderposition.designation as designation2'] )
+        self.singleOrderPosition.setTreeFields( ['position','amount','articleid','articles.number as arnumber','articles.designation as ardsesignation', 'proposalposition.designation as designation2'] )
         self.singleOrderPosition.setStore( gtk.ListStore(gobject.TYPE_UINT, gobject.TYPE_FLOAT, gobject.TYPE_UINT ,gobject.TYPE_STRING , gobject.TYPE_STRING, gobject.TYPE_STRING, gobject.TYPE_UINT) ) 
         self.singleOrderPosition.setTreeOrder('position,articleid')
         self.singleOrderPosition.setListHeader([_('Pos.'),_('Amount'),_('Article-ID'),_('Number'),_('Designation'),_('Designation2')])

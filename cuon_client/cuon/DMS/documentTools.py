@@ -122,11 +122,13 @@ class documentTools(dumps):
                         if f_in and f_out:
                             s = f_in.readline()
                             while s:
-                                s = self.replaceValues(dicVars,s)                                 
+                                s = self.replaceValues(dicVars,s, dicUser)                                 
                                 
                                 f_out.write(s)
                                 s = f_in.readline()
-                                
+                            f_in.close()
+                            f_out.close()
+                            
                             singleDMS.tmpFile = singleDMS.tmpFile + '_w1'
                         else:
                             'error read/create tmp-file'
@@ -145,15 +147,17 @@ class documentTools(dumps):
             if dicUser.has_key('Email'):
                 liAttachments = []
                 filename = singleDMS.tmpFile
+                print 'filename = ',  filename
                 f = open(filename,'rb')
                 if f:
                     s = f.read()
+                    #print 's = ',  s
                     s = bz2.compress(s)
                     s = base64.encodestring(s)
                     dicAtt = {}
-                    dicAtt['filename'] = filename
+                    dicAtt['filename'] = filename[:filename.find('_w1')]
                     dicAtt['data'] = s
-        
+                    print 'len data = ', dicAtt['filename'] ,  len(dicAtt['data'])
                     liAttachments.append(dicAtt)
                 f.close()
                 
@@ -163,7 +167,11 @@ class documentTools(dumps):
                     dicV['To'] = emailTo
                     dicV['Subject'] = dicVars['email_subject']
                     dicV['Body'] = dicVars['Body']
-                    print 'dicV = ', dicV
+                    if dicVars.has_key('sm'):
+                        dicV['sm'] = dicVars['sm']
+                    print 'dicV = ', dicV.keys()
+                    print dicUser['Email']
+                    
                     em = self.rpc.callRP('Email.sendTheEmail', dicV, liAttachments, dicUser)
                     self.writeEmailLog(em)
                     

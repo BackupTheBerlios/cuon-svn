@@ -876,6 +876,37 @@
       <default></default>
       <comment>CAD program</comment>
     </field>
+       <field>
+      <name>user_mail_pickup</name>
+      <type>bool</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>1</size>
+      <default>true</default>
+      <comment>mail the pickup to the customer</comment>
+    </field>
+       <field>
+      <name>user_mail_supply</name>
+      <type>bool</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>1</size>
+      <default>true</default>
+      <comment>mail the supply to the customer</comment>
+    </field>
+       <field>
+      <name>user_mail_invoice</name>
+      <type>bool</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>1</size>
+      <default>true</default>
+      <comment>mail the invoice to the customer</comment>
+    </field>
+    
     
   </table>
     

@@ -21,14 +21,14 @@ import gobject
 #from gtk import TRUE, FALSE
 
 
-class SingleOrderMisc(SingleData):
+class SingleProposalMisc(SingleData):
 
     
     def __init__(self, allTables):
 
         SingleData.__init__(self)
         # tables.dbd and address
-        self.sNameOfTable =  "ordermisc"
+        self.sNameOfTable =  "proposalmisc"
         self.xmlTableDef = 0
         # self.loadTable()
         # self.saveTable()

@@ -22,14 +22,14 @@ import gobject
 #from gtk import TRUE, FALSE
 
 
-class SingleOrder(SingleData):
+class SingleProposal(SingleData):
 
     
     def __init__(self, allTables):
 
         SingleData.__init__(self)
         # tables.dbd and address
-        self.sNameOfTable =  "orderbook"
+        self.sNameOfTable =  "proposal"
         self.xmlTableDef = 0
         # self.loadTable()
         # self.saveTable()

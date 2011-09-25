@@ -1,15 +1,18 @@
+# fix a bug in uuid, import it first !!
 
+import uuid
 
 import os
 import sys
 import time
-import random   
 import pygtk
 pygtk.require('2.0')
 import gtk
 import gtk.glade
 import datetime
 import types 
+import cuon.DMS.documentTools
+
 
 class misc:
     def __init__(self):
@@ -19,22 +22,58 @@ class misc:
     def getRandomFilename(self, sPrefix='.tmp'):
     
     
-        s = ''
+       return str(uuid.uuid4())+ sPrefix
         
-        n = random.randint(0,1000000000)
-        for i in range(13):
-            ok = 1
-            while ok:
-                r = random.randint(65,122)
-                if r < 91 or r > 96:
-                    ok = 0
-                    s = s + chr(r)
+#        n = random.randint(0,1000000000)
+#        for i in range(13):
+#            ok = 1
+#            while ok:
+#                r = random.randint(65,122)
+#                if r < 91 or r > 96:
+#                    ok = 0
+#                    s = s + chr(r)
+#                    
+#        s = s + `n` + sPrefix
+#
+#        return s
+#
+
+class sendAsEmail():
+    def __init__(self):
+        pass
+        
+        
+    def sendNormal(self, Type, sTo,  dicUser,  singleDMS,  dicVars ):
+        sSubject = 'email'
+        sText = 'information below'
+        if Type == 'Supply':
+            try:
+                f = open(dicUser[prefPath]['templates'])+'/supply_subject.tpl'
+                sSubject = f.read()
+                f.close()
+            except:
+                print 'error read supply subject'
+                
+            try:
+                f = open(dicUser[prefPath]['templates'])+'/supply_text.tpl'
+                sText = f.read()
+                f.close()
+            except:
+                print 'error read supply Text'
                     
-        s = s + `n` + sPrefix
-
-        return s
-
-
+        
+        
+        dicVars['From'] = dicUser['Email']['From']
+        dicVars['To'] = sTo
+        
+        dicVars['Body'] = sText + '\n\n -- \n' + dicUser['Email']['Signatur']
+        dicVars['email_subject'] = sSubject
+        
+        print dicVars
+        
+        dt = cuon.DMS.documentTools.documentTools()
+        dt.viewDocument(singleDMS,dicUser, dicVars,'sentAutomaticEmail', sTo)         
+            
 class Treeview:
     def __init__(self):
         pass
@@ -55,7 +94,7 @@ class Treeview:
         print 'fill Tree'
         try:
             treestore = gtk.TreeStore(object)
-            treestore = gtk.TreeStore(str)
+            treestore = gtk.TreeStself.Email['sendInvoice'] = Falseore(str)
             ts.set_model(treestore)
                 
             if liGroups:

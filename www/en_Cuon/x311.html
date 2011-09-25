@@ -1,24 +1,23 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
-></TITLE
+>Updaten von C.U.O.N.</TITLE
 ><META
 NAME="GENERATOR"
 CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
-TITLE="
-       C.U.O.N. 
-    "
+TITLE="C.U.O.N."
 HREF="index.html"><LINK
 REL="UP"
-TITLE="Configuration"
-HREF="c167.html"><LINK
+TITLE="Setup Tool"
+HREF="c304.html"><LINK
 REL="PREVIOUS"
-TITLE="clients.ini "
-HREF="x309.html"><LINK
+TITLE="Setup Tool"
+HREF="c304.html"><LINK
 REL="NEXT"
-HREF="x312.html"></HEAD
+TITLE="Druckvorlagen"
+HREF="c319.html"></HEAD
 ><BODY
 CLASS="sect1"
 BGCOLOR="#FFFFFF"
@@ -38,9 +37,7 @@ CELLSPACING="0"
 ><TH
 COLSPAN="3"
 ALIGN="center"
->C.U.O.N.: 
-       Installation and Usage 
-    </TH
+>C.U.O.N.: Installation and Usage</TH
 ></TR
 ><TR
 ><TD
@@ -48,7 +45,7 @@ WIDTH="10%"
 ALIGN="left"
 VALIGN="bottom"
 ><A
-HREF="x309.html"
+HREF="c304.html"
 ACCESSKEY="P"
 >Prev</A
 ></TD
@@ -56,13 +53,13 @@ ACCESSKEY="P"
 WIDTH="80%"
 ALIGN="center"
 VALIGN="bottom"
->Chapter 2. Configuration</TD
+>Chapter 3. Setup Tool</TD
 ><TD
 WIDTH="10%"
 ALIGN="right"
 VALIGN="bottom"
 ><A
-HREF="x312.html"
+HREF="c319.html"
 ACCESSKEY="N"
 >Next</A
 ></TD
@@ -76,68 +73,44 @@ CLASS="sect1"
 ><H1
 CLASS="sect1"
 ><A
-NAME="sql_ini"
->2.5. </A
+NAME="setup_update"
+>3.2. Updaten von C.U.O.N.</A
 ></H1
->sql.ini 
-
-Hier bitte alle Gruppen durch Kommata getrennt eintragen
-[GROUPS]
-NAMES: buero,rechnung
-
-
-Hier die Vorgaberechte für div. automatische Operationen eingeben. Dabei wird als ersten die Rechte eingetragen, nach dem Schema:
-rwxrwxrwx
-r = read, also lesen
-w = write, also schreiben
-x = eXecute, also ausführen
-jeweils für User, Gruppe, Alle
-ein Unterstrich bedeutet, kein Recht
-Danach, mit Kommata getrennt, die Gruppen, die eingetragen werden sollen.
-
-[DEFAULT_MODUL_RIGHTS_DMS] 
-INVOICE: rw_r__r__,rechnung 
-
-[LIMIT]
-Address: 30
-Garden: 217
-Project: 50
-Articles: 80
-Order: 50
-
-Her wird die Anzahl der Listeneinträge, die beim Modulstart angezeigt werden Modul eingetragen. Beispiel Adress:30 zeigt beim Laden des Adressmoduls die ersten 30 Adresseinträge
-
-Bei einer schnellen Netzwerkverbindung zu dem Server kann man getrost die meisten Einträge auf 500 stellen.
-
-Diese Einträge gelten für die Auftragsbearbeitung
-[modul_order]
-default_top: 1
-die default zahlungsbedingung, wenn keine beim Auftrag gefunden wird
-
-Folgende Einträge werden für das Überwinterungsmodul (Gartenbaubetriebe) benötigt:
-
-[modul_hibernation]
-replace_staff_pickup: 1
-replace_staff_supply: 2
-replace_plant_hibertion:3
-replace_plant_add_pot:4
-replace_plant_add_material:5
-replace_plant_add_earth:6
-replace_plant_add_misc:7
-
-Diese Einstellungen weisen den Überwinterungsdienstleistungen (Überwintern, Liefern, Umtopfarbeiten etc.) feste Artikel (die Nummer ist die Artikel-ID) zu. Anhand von diesen Artikel wird danach die Mehrwertsteuer, Brutto / Nettorpreis eingestellt.
-Die nachfolgende Einträge sind der Text für die Rechnungsstellung:
-
-translate_price_hibernation_for: Preis der Überwinterung für
-translate_price_add_pot_for: Preis für größeren Topf
-translate_price_add_material_for: Preis für zus. Material
-translate_price_add_earth_for: Preis für zus. Erde
-translate_price_add_misc_for: Preis für Sonstiges
-translate_price_staff_pickup_for: Abholkosten
-translate_price_staff_supply_for: Anlieferkosten
-translate_price_staff_pickup_for: Abholkosten
-translate_price_staff_supply_for: Anlieferkosten
-</DIV
+><P
+>Start the Cuon setup tool from the Settings menu. Or from the
+        terminal: cuon_setup to start the graphical installation routine. Then
+        press the "Start Install" button below. Please remember, that you need
+        as with the installation a functioning SSH access without a password,
+        it needs a key !! As a first step it is necessary to add or update
+        update the user.cfg . Use menu item :<SPAN
+CLASS="emphasis"
+><I
+CLASS="emphasis"
+> Edit config files
+        -&#62; Server--&#62;User.cfg</I
+></SPAN
+> . With a new installation or if
+        user data has been changed, added new users, or the like, then please
+        run in any case in SQL create Grants Rights to the point file.</P
+><P
+>So it should in any case the o.g. be Cuon-admin area. Here in
+        the example is cuon as SSL (https Protocoll) Server installed. This
+        version is recommended umbedingt if clients are to access from the
+        Internet to the server.</P
+><P
+>Now it is neccessary to build the Client, do it at '<SPAN
+CLASS="emphasis"
+><I
+CLASS="emphasis"
+>&#13;        Services -&#62; Create Client </I
+></SPAN
+></P
+><P
+>At last step you prepare the database. The importance of this
+        step: * Using the "Connect" with admin user (!) And password. * Then
+        on to the next step: Tools -&#62; Database . Then just run "SQL server
+        -&#62; start complete update." Done</P
+></DIV
 ><DIV
 CLASS="NAVFOOTER"
 ><HR
@@ -154,7 +127,7 @@ WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
 ><A
-HREF="x309.html"
+HREF="c304.html"
 ACCESSKEY="P"
 >Prev</A
 ></TD
@@ -172,7 +145,7 @@ WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
 ><A
-HREF="x312.html"
+HREF="c319.html"
 ACCESSKEY="N"
 >Next</A
 ></TD
@@ -182,13 +155,13 @@ ACCESSKEY="N"
 WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
->clients.ini</TD
+>Setup Tool</TD
 ><TD
 WIDTH="34%"
 ALIGN="center"
 VALIGN="top"
 ><A
-HREF="c167.html"
+HREF="c304.html"
 ACCESSKEY="U"
 >Up</A
 ></TD
@@ -196,7 +169,7 @@ ACCESSKEY="U"
 WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
-></TD
+>Druckvorlagen</TD
 ></TR
 ></TABLE
 ></DIV

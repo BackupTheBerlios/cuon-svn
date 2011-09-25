@@ -2,15 +2,15 @@
 <HTML
 ><HEAD
 ><TITLE
-> Foreword </TITLE
+>Foreword</TITLE
 ><META
 NAME="GENERATOR"
 CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
-TITLE=" C.U.O.N. "
+TITLE="C.U.O.N."
 HREF="index.html"><LINK
 REL="PREVIOUS"
-TITLE=" C.U.O.N. "
+TITLE="C.U.O.N."
 HREF="index.html"><LINK
 REL="NEXT"
 TITLE="C.U.O.N. Administration"
@@ -34,7 +34,7 @@ CELLSPACING="0"
 ><TH
 COLSPAN="3"
 ALIGN="center"
->C.U.O.N.:  Installation and Usage </TH
+>C.U.O.N.: Installation and Usage</TH
 ></TR
 ><TR
 ><TD
@@ -71,50 +71,74 @@ CLASS="preface"
 ><A
 NAME="AEN11"
 ></A
-> Foreword </H1
+>Foreword</H1
 ><P
-> C.U.O.N. is the acronym for <SPAN
+>C.U.O.N. is the acronym for <SPAN
 CLASS="emphasis"
 ><I
 CLASS="emphasis"
-> Common Universally Organized Network </I
+> Common Universally Organized
+    Network </I
 ></SPAN
 ></P
 ><P
->C.U.O.N. is an ERP System for Linux-Server with Clients running on Linux, Windows and a lot other Systems that provide Python. It has a big Address-Module with newsletter, Document Management System, Notes and email-notification. Also articles, Support Tickets, Projects, Orderbook,Accounting,  Mindmap and a lot more. Also some special modules for Gardening center.    </P
+>C.U.O.N. is an ERP System for Linux-Server with Clients running on
+    Linux, Windows and a lot other Systems that provide Python. It has a big
+    Address-Module with newsletter, Document Management System, Notes and
+    email-notification. Also articles, Support Tickets, Projects,
+    Orderbook,Accounting, Mindmap and a lot more. Also some special modules
+    for Gardening center.</P
 ><P
-> In the Year 2001 I thought about an ERP-Program for LINUX. First tries with c++ and postgres are to conventional and I thought about ERP and Network. So the design of C.U.O.N. is this: On a host ( or different hosts ) runs the python twisted-Server. The Database Backend is realized with Postgres. The clients ( at this time only my python client ) communicate with xmlrpc, so many different languages are supported ( java, c++, ruby, etc. ). Some example: The client will look at a document ( a invoice ). It send the data via xmlrpc to the communication-server. This server takes several sql-queries and send them to the report-server. This server generates the report, convert it to a pdf-file and send this file back. Now the communication-server sends this to the client. The client open a pdf-viewer and have a look at the document. </P
+>In the Year 2001 I thought about an ERP-Program for LINUX. First
+    tries with c++ and postgres are to conventional and I thought about ERP
+    and Network. So the design of C.U.O.N. is this: On a host ( or different
+    hosts ) runs the python twisted-Server. The Database Backend is realized
+    with Postgres. The clients ( at this time only my python client )
+    communicate with xmlrpc, so many different languages are supported ( java,
+    c++, ruby, etc. ). Some example: The client will look at a document ( a
+    invoice ). It send the data via xmlrpc to the communication-server. This
+    server takes several sql-queries and send them to the report-server. This
+    server generates the report, convert it to a pdf-file and send this file
+    back. Now the communication-server sends this to the client. The client
+    open a pdf-viewer and have a look at the document.</P
 ><P
-> At this time, cuon has the standard modules like addresses, articles, stock, order and some specials like a </P
+>At this time, cuon has the standard modules like addresses,
+    articles, stock, order and some specials like a</P
 ><P
->&#13;      <P
+><P
 ></P
 ><UL
 ><LI
 ><P
-> DMS - ( Document management System ) which can scan documents, save OpenOffice? docs, Images, speech and so on </P
+>DMS - ( Document management System ) which can scan documents,
+          save OpenOffice? docs, Images, speech and so on</P
 ></LI
 ><LI
 ><P
-> AI - an expert system with several bot funktions </P
+>AI - an expert system with several bot funktions</P
 ></LI
 ><LI
 ><P
-> Project - a project management system with project, phases and task, personal resources and material-resources. </P
+>Project - a project management system with project, phases and
+          task, personal resources and material-resources.</P
 ></LI
 ><LI
 ><P
-> iCalendar - the date and times are send to an iCal-File and so you can use them with evolution or kontact. </P
+>iCalendar - the date and times are send to an iCal-File and so
+          you can use them with evolution or kontact.</P
 ></LI
 ><LI
 ><P
-> The GUI and logic are strictly separately, the GUI are build with glade. </P
+>The GUI and logic are strictly separately, the GUI are build
+          with glade.</P
 ></LI
 ></UL
->
-    </P
+></P
 ><P
-> The servers are: cuon_xmlrpc - communication with the clients, Postgres and other server cuon_web - iCalendar and web cuon_report - reportserver, pdf-creator cuon_ai - parse normal sentences and translate it to keywords for sql-queries </P
+>The servers are: cuon_xmlrpc - communication with the clients,
+    Postgres and other server cuon_web - iCalendar and web cuon_report -
+    reportserver, pdf-creator cuon_ai - parse normal sentences and translate
+    it to keywords for sql-queries</P
 ></DIV
 ><DIV
 CLASS="NAVFOOTER"

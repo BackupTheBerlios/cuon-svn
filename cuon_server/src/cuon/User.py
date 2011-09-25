@@ -8,7 +8,6 @@ import random
 import xmlrpclib
 from basics import basics
 import Database
-import uuid
 import urllib
 import httplib
 import md5

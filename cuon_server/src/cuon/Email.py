@@ -91,39 +91,42 @@ class cuonemail(xmlrpc.XMLRPC, basics):
 ##                self.Email['Password']='secret'
 ##                self.Email['Signatur']='NONE'
 
-                
+                print '1'
                 if dicEmail['LoginUser'] != 'login':
                     self.EMAILUSER = dicEmail['LoginUser']
-                    
+                print '2'   
                 if dicEmail['Password'] != 'secret':
                     self.EMAILPASSWORD = dicEmail['Password']
-                    
+                print '3'    
                 if dicEmail['Host'] != 'mail_anywhere.com':
                     self.EMAILSERVER = dicEmail['Host']
                       
             
             if dicValues.has_key('From'):
                 cuonmail.from_address = dicValues['From']
-             
+            print '4'
             if dicValues.has_key('To'):
                 print 'send mail to ',  dicValues['To']
                 cuonmail.recipients.add(dicValues['To']) 
                 
-               
+            print '6'   
             if dicValues.has_key('Subject'):
                 cuonmail.subject = dicValues['Subject']
-                
+            print '7'
             if dicValues.has_key('Body'):
+                print 'dicValues = ',  dicValues.keys()
                 dicValues = self.replaceValues(dicValues)
                 cuonmail.message = dicValues['Body']
-                
+            
+            print '8'
             cuonmail.smtp_server = self.EMAILSERVER
+            print '9'
             cuonmail.smtp_user = self.EMAILUSER
+            print '10'
             cuonmail.smtp_password = self.EMAILPASSWORD
-            cuonmail.smtp_crypt = dicEmail['Crypt'
-                                           
-                                           
-                                           ]
+            print '11'
+            cuonmail.smtp_crypt = dicEmail['Crypt']
+            print '12'
             
         except Exception, params:
             print 'Error in Email'

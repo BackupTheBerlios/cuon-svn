@@ -22,7 +22,7 @@ import gobject
 #from gtk import TRUE, FALSE
 
 
-class SingleOrderPayment(SingleData):
+class SingleProposalPayment(SingleData):
 
     
     def __init__(self, allTables):

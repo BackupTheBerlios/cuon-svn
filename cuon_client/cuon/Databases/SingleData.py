@@ -590,7 +590,7 @@ class SingleData(gladeXml, logs):
 ##                            sValue = '0'
 ##                        elif sValue == None:
 ##                            sValue = '0'
-##                        else:
+##                      newRecord  else:
 ##                            sValue = '0'
                         sValue = `self.getCheckedValue(sValue, 'int')`
                             

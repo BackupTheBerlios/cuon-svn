@@ -56,6 +56,10 @@ import cuon.Project.project
 import cuon.Project.SingleProject
 import cuon.Staff.staff 
 import cuon.Staff.SingleStaff
+import cuon.Misc.misc
+import cuon.Misc.messages
+
+
 
 class orderwindow(chooseWindows,  ArticlesFastSelection):
     """
@@ -384,7 +388,7 @@ class orderwindow(chooseWindows,  ArticlesFastSelection):
         self.singleDMS.newCategory = _('payments')
         self.singleDMS.Rights = 'INVOICE'
         
-        self.singleDMS.save(['document_image'])
+        newID = self.singleDMS.save(['document_image'])
         
         
 
@@ -406,6 +410,8 @@ class orderwindow(chooseWindows,  ArticlesFastSelection):
         self.singleOrder.load(oldID)    
         
     def on_print_delivery_note1_activate(self, event):
+        sTo = [self.singleAddress.getEmail()]
+        
         print 'delivery note'
         dicOrder = {}
         dicOrder['orderNumber'] = self.singleOrder.getOrderNumber(self.singleOrder.ID)
@@ -413,6 +419,7 @@ class orderwindow(chooseWindows,  ArticlesFastSelection):
         #invoice = cuon.Order.standard_delivery_note.standard_delivery_note(dicOrder)
               
              
+
         
         dicOrder['orderid'] = self.singleOrder.ID
         
@@ -425,18 +432,29 @@ class orderwindow(chooseWindows,  ArticlesFastSelection):
         Pdf = self.rpc.callRP('Report.server_order_supply_document', dicOrder, self.dicUser)
         fname = self.showPdf(Pdf, self.dicUser,'SUPPLY')
 #        ok = self.rpc.callRP('Finances.createTicketFromInvoice',invoiceNumber,self.dicUser)
-#        # insert invoice into dms 
-#        self.documentTools.importDocument(self.singleDMS,self.dicUser,fname)
-#        self.singleDMS.ModulNumber = self.MN['Order']
-#        self.singleDMS.sep_info_1 = self.singleOrder.ID    
-#        self.singleDMS.newRecord()
-#        self.singleDMS.newDate = self.getActualDateTime()['date']
-#        self.singleDMS.newTitle = _('invoice') + ' ' + `invoiceNumber`
-#        print self.singleDMS.newDate
-#        self.singleDMS.newCategory = _('payments')
-#        self.singleDMS.Rights = 'INVOICE'
-#        
-#        self.singleDMS.save(['document_image'])
+        # insert supply into dms 
+        self.documentTools.importDocument(self.singleDMS,self.dicUser,fname)
+        self.singleDMS.ModulNumber = self.MN['Order']
+        self.singleDMS.sep_info_1 = self.singleOrder.ID    
+        self.singleDMS.newRecord()
+        self.singleDMS.newDate = self.getActualDateTime()['date']
+        self.singleDMS.newTitle = _('delivery') + ' ' + `deliveryNumber`
+        print self.singleDMS.newDate
+        self.singleDMS.newCategory = _('delivery')
+        self.singleDMS.Rights = 'DELIVERY'
+        
+        newID = self.singleDMS.save(['document_image'])
+        dicVars = {}
+        dicVars['sm'] = {}
+        print 'send email ok ',  newID,  self.dicUser['Email']['sendSupply']
+        if self.dicUser['Email']['sendSupply'] and sTo[0]:
+            
+            cmm = cuon.Misc.messages.messages()
+            if cmm.QuestionMsg(_('Would you send it as email ?')):
+                self.singleDMS.load(newID)
+                cme = cuon.Misc.misc.sendAsEmail()
+                cme.sendNormal('Supply', sTo,  self.dicUser,  self.singleDMS,  dicVars)
+        
              
     def on_print_pickup_note1_activate(self, event):
         print 'pickup note'

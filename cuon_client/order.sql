@@ -2,17 +2,41 @@
  DECLARE
     
     iClient int ;
- 
-
+    iNewOrderID int ; 
+    iNewPositionID int ;
+    sSql text ;
+    sSql2 text ;
+    
+    r record ;
     BEGIN
+        iNewOrderID := 0 ;
         
-        update orderbook set process_status = 500 where id =  iProposalID ;
+        sSql := ''select * from fct_duplicate_table_entry('' || quote_literal(''proposal'') || '','' || quote_literal(''orderbook'') || '','' || iProposalID || '', '' || quote_literal(''orderbook_id'') || '')  as newid '' ;
+        raise notice '' sSql = %'',sSql ;
+        execute(sSql) into iNewOrderID;
+        raise notice ''new order id = %'',iNewOrderID ;
         
-        if FOUND then
-            return 1 ;
-        else 
-            return 0 ;
-        end if ;
+        IF iNewOrderID > 0 THEN 
+            -- copy the proposalpositions 
+            
+            sSql := '' select id from proposalposition where orderid = '' || iProposalID  || '' '' || fct_getWhere(2,'' '')  ;
+            
+            FOR r in execute(sSql)  LOOP
+                sSql2 := ''select * from fct_duplicate_table_entry('' || quote_literal(''proposalposition'') || '','' || quote_literal(''orderposition'') || '','' || r.id || '', '' || quote_literal(''orderposition_id'') || '')  as newid '' ; 
+               
+                raise notice '' sSql2 = %'',sSql2 ;
+                execute(sSql2) into iNewPositionID;
+                update orderposition set orderid = iNewOrderID where id =  iNewPositionID ;
+                
+            END LOOP ;
+            
+            
+            
+            
+            update orderbook set process_status = 500 where id =  iNewOrderID ;
+        END IF ;
+            
+       return true ;
         
     END ;
     
