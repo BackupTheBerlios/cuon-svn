@@ -445,7 +445,12 @@ class orderwindow(chooseWindows,  ArticlesFastSelection):
         
         newID = self.singleDMS.save(['document_image'])
         dicVars = {}
-        dicVars['sm'] = {}
+        dicVars['sm'] = self.getOrderInfo()
+        for key in dicOrder.keys():
+            dicVars['sm']['delivery_' + key] = dicOrder[key]
+            
+        print 'dicVars[sm] = ',  dicVars['sm']
+        
         print 'send email ok ',  newID,  self.dicUser['Email']['sendSupply']
         if self.dicUser['Email']['sendSupply'] and sTo[0]:
             
@@ -1110,7 +1115,22 @@ class orderwindow(chooseWindows,  ArticlesFastSelection):
         if self.tabOption == self.tabOrder:
             self.on_order_dup_activate(event)
         
+    def getOrderInfo(self):
+        
+        
+        dicOrder = self.singleOrder.firstRecord
+     
+        for key in self.singleAddress.firstRecord.keys():
+            dicOrder['address_' + key] = self.singleAddress.firstRecord[key]
+        dicInternInformation = self.rpc.callRP('Database.getInternInformation',self.dicUser)
+        if dicInternInformation not in ['NONE','ERROR']:
+            for key in dicInternInformation:
+                dicOrder[key] = dicInternInformation[key]
+        if self.singlePartner.ID > 0:
+            for key in self.singlePartner.firstRecord.keys():
+                dicOrder['partner_' + key] = self.singlePartner.firstRecord[key]
             
+        return dicOrder
     def refreshTree(self):
         self.singleOrder.disconnectTree()
         self.singleOrderSupply.disconnectTree()

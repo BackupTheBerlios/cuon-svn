@@ -1,8 +1,8 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
->Sonstiges</TITLE
+>Adressen- und Terminpflege </TITLE
 ><META
 NAME="GENERATOR"
 CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
@@ -11,10 +11,13 @@ TITLE=" C.U.O.N. "
 HREF="index.html"><LINK
 REL="UP"
 TITLE="Umfangreiche Beispiele"
-HREF="p1488.html"><LINK
+HREF="p1594.html"><LINK
 REL="PREVIOUS"
+TITLE="Umfangreiche Beispiele"
+HREF="p1594.html"><LINK
+REL="NEXT"
 TITLE="Anleitung für Kontakter "
-HREF="x1503.html"></HEAD
+HREF="x1609.html"></HEAD
 ><BODY
 CLASS="chapter"
 BGCOLOR="#FFFFFF"
@@ -42,7 +45,7 @@ WIDTH="10%"
 ALIGN="left"
 VALIGN="bottom"
 ><A
-HREF="x1503.html"
+HREF="p1594.html"
 ACCESSKEY="P"
 >Prev</A
 ></TD
@@ -55,7 +58,11 @@ VALIGN="bottom"
 WIDTH="10%"
 ALIGN="right"
 VALIGN="bottom"
->&nbsp;</TD
+><A
+HREF="x1609.html"
+ACCESSKEY="N"
+>Next</A
+></TD
 ></TR
 ></TABLE
 ><HR
@@ -67,31 +74,50 @@ CLASS="chapter"
 ><A
 NAME="AEN1596"
 ></A
->Chapter 14. Sonstiges</H1
+>Chapter 16. Adressen- und Terminpflege </H1
 ><DIV
 CLASS="sect1"
 ><H1
 CLASS="sect1"
 ><A
-NAME="userfax"
->14.1. Faxe senden</A
+NAME="ub1"
+>16.1. Voraussetzungen</A
 ></H1
 ><P
->Jeder user kann über einen vorhanden Faxserver seine Faxe verschicken. Dazu sollte z.B. im Openoffice ein Faxdrucker angelegt werden.
+>&#13;Nach dem Start von CUON und dem Anmelden sowie der Auswahl des Mandanten wählen wir im Menü Stammdaten den Eintrag Adressverwaltung aus. Es öffnet sich das Adressfenster mit den ersten Adressen. Nun können wir als erstes eine Auswahl treffen, also z.B. alle Adressen, die mit dem Buchstaben a beginnen und in dem Postleitzahlbereich 33445 sind.
+Dazu geben wir bei Nachname folgende Kombination ein:
+</P
+><DIV
+CLASS="example"
+><A
+NAME="regaus"
+></A
+><P
+><B
+>Example 16-1. Regulärer ausdruck</B
+></P
+><PRE
+CLASS="programlisting"
+>&#13; #~*'^a.*' (Lange Form) oder ^a ( Kurzform) und bei der Postleitzahl 33445.
+</PRE
+></DIV
+><P
+>Dann einfach die Eingabetaste betätigen oder den Button Suchen anklicken. ( Nähere Hinweise zu regulären Suchbegriffen bitte [:regulären_Ausdrücken: hier nachschlagen]. Die gewünschten Adressen erscheinen in der Listenauswahl. Die gewünschte Adresse anklicken und alle relevanten Daten ( Adresse, Telefonnummer ) sind im unteren Detailbereich sichtbar. Jetzt kann der Teilnehmer angerufen werden.
 </P
 ><P
->Starten sie dazu das Programm spadmin, um einen neue Drucker hinzuzufügen, es befindet sich normaler weise hier:</P
-><P
->/usr/lib/openoffice/program/spadmin</P
-><P
->In der Druckerverwaltung wird 'Neuer Drucker' und dann 'eine Faxlösung anbinden' ausgewählt und bestätigt. Als Nächstes wird der Standardtreiber gewählt und als Kommando</P
-><P
->sendfax -n -d "(PHONE)" "(TMP)"</P
-><P
->eingeben. Zum Schluß erhält der Faxdrucker noch einen Namen. Damit ist der Faxdrucker eingerichtet und funktionsbereit.
+>Es empfiehlt sich, die Adressverwaltung ein 2. mal zu öffnen und auf eine andere Arbeitsfläche zu legen (LINUX, BSD only). Wenn ein Kunde anruft, kann man ihn dann schnell suchen. auch hierbei sind die regulären Ausdrücke von entscheidener Bedeutung. Als Beispiel:
 </P
 ><P
->Jetzt können vom DMS aus z.B. Briefe oder Dokumente einfach per FAX verschickt werden</P
+>Der Kunde Bach+Kampert Küchen-Traum ruft an. Jetzt lange suchen, wie der Kunde geschrieben wird,also mit + oder mit und ist nicht nur ineffektiv, sondern verärgert auch durch die lange Zeitdauer den Kunden. Also empfiehlt es sich, einfach bach.*küchen( oder küchen.*raum einzugeben und eine hohe Trefferquote wird erreicht. Der Punkt steht dabei für ein beliebiges Zeichen, der Stern für eine beliebige Menge, zusammen also <SPAN
+CLASS="emphasis"
+><I
+CLASS="emphasis"
+>irgendwas dazwischen</I
+></SPAN
+>.
+</P
+><P
+>Benachrichtigung der Reps: Wenn der Rep keine PDF-Datei haben möchte, können wir ihm auch die Email als Microsoft-Word Dokument schicken.</P
 ></DIV
 ></DIV
 ><DIV
@@ -110,7 +136,7 @@ WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
 ><A
-HREF="x1503.html"
+HREF="p1594.html"
 ACCESSKEY="P"
 >Prev</A
 ></TD
@@ -127,20 +153,24 @@ ACCESSKEY="H"
 WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
->&nbsp;</TD
+><A
+HREF="x1609.html"
+ACCESSKEY="N"
+>Next</A
+></TD
 ></TR
 ><TR
 ><TD
 WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
->Anleitung für Kontakter</TD
+>Umfangreiche Beispiele</TD
 ><TD
 WIDTH="34%"
 ALIGN="center"
 VALIGN="top"
 ><A
-HREF="p1488.html"
+HREF="p1594.html"
 ACCESSKEY="U"
 >Up</A
 ></TD
@@ -148,7 +178,7 @@ ACCESSKEY="U"
 WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
->&nbsp;</TD
+>Anleitung für Kontakter</TD
 ></TR
 ></TABLE
 ></DIV

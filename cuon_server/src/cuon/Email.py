@@ -81,7 +81,8 @@ class cuonemail(xmlrpc.XMLRPC, basics):
 
         ok = ''
         try:
-                
+            dicValues = self.replaceValues(dicValues)
+              
             if dicUser.has_key('Email'):
                 dicEmail = dicUser['Email']
 ##                self.Email['From']='MyAddress@mail_anywhere.com'
@@ -114,9 +115,8 @@ class cuonemail(xmlrpc.XMLRPC, basics):
                 cuonmail.subject = dicValues['Subject']
             print '7'
             if dicValues.has_key('Body'):
-                print 'dicValues = ',  dicValues.keys()
-                dicValues = self.replaceValues(dicValues)
-                cuonmail.message = dicValues['Body']
+                #print 'dicValues = ',  dicValues.keys()
+                cuonmail.message = dicValues['Body']  
             
             print '8'
             cuonmail.smtp_server = self.EMAILSERVER
@@ -192,26 +192,31 @@ class cuonemail(xmlrpc.XMLRPC, basics):
         return result
         
     def replaceValues(self, dicValues) :
-        dicVars = dicValues['sm']
-        s = dicValues['Body']
-        for key in dicVars.keys():
-            try:
-                #print 'try to replace this ', key,  dicVars[key]
-                if dicVars[key] == 'NONE' or dicVars[key] ==None:
-                    s = s.replace('##'+ key + ';;','')
-                elif self.checkType(dicVars[key], 'string') :
-                    s = s.replace('##'+ key + ';;',dicVars[key] )
-                
-                else:
-                    s = s.replace('##'+ key + ';;',`dicVars[key]` )
-            except Exception,  params:
-                print Exception, params
-                s = s = s.replace('##'+ '' + ';;','')
+        try:
+            dicVars = dicValues['sm']
+            for v in ['Body','Subject']:
+                s = dicValues[v]
+                for key in dicVars.keys():
+                    try:
+                        #print 'try to replace this ', key,  dicVars[key]
+                        if dicVars[key] == 'NONE' or dicVars[key] ==None:
+                            s = s.replace('##'+ key + ';;','')
+                        elif self.checkType(dicVars[key], 'string') :
+                            s = s.replace('##'+ key + ';;',dicVars[key].encode('utf-8'))
+                        
+                        else:
+                            s = s.replace('##'+ key + ';;',`dicVars[key]` )
+                    except Exception,  params:
+                        print Exception, params
+                        s = s = s.replace('##'+ '' + ';;','')
+                dicValues[v] = s 
+        except Exception, params:
+            print Exception, params
         
         
-        dicValues['Body'] = s
         
         return dicValues
+        
 ##        Email(
 ##557           from_address = "server@gp-server.gp",
 ##558           smtp_server = "gp-server.gp",

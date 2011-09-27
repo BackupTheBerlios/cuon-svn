@@ -1155,32 +1155,33 @@ class Address(xmlrpc.XMLRPC, basics):
             
         if sTable == "address":
             sSql ='select address_id as id from addresses_misc where ('
+        elif sTable == "partner":
+            sSql ='select id as id from partner where ('
+        for email in liEmail:
+            liSingleEmail = email.split(' ')
             
-            for email in liEmail:
-                liSingleEmail = email.split(' ')
-                
-                for sEmail in liSingleEmail:
-                    if sEmail.find('@') > 0:
-                        for sSt in ['<', '>', '"']:
-                            sEmail = sEmail.strip(sSt)
-                            sEmail = sEmail.strip(sSt)
-                       
+            for sEmail in liSingleEmail:
+                if sEmail.find('@') > 0:
+                    for sSt in ['<', '>', '"']:
+                        sEmail = sEmail.strip(sSt)
+                        sEmail = sEmail.strip(sSt)
+                    if sTable == "address":
                         sSql += " addresses_misc.additional_emails ~* '" + sEmail+ "' or "        
-                        
-                            
-            sSql = sSql[0:len(sSql) -3]
-            sSql += ' ) '
-            sSql += self.getWhere("",dicUser,2)
-            print sSql 
-            result = self.oDatabase.xmlrpc_executeNormalQuery(sSql,dicUser)
-            
-            
-            print result
-            if result and result not in ['NONE', 'ERROR']:
-               
-                for oneRow in result:
-                    liID.append(oneRow['id'])
-                print liID               
+                    elif sTable == "partner":
+                        sSql += " partner.additional_emails ~* '" + sEmail+ "' or "     
+        sSql = sSql[0:len(sSql) -3]
+        sSql += ' ) '
+        sSql += self.getWhere("",dicUser,2)
+        print sSql 
+        result = self.oDatabase.xmlrpc_executeNormalQuery(sSql,dicUser)
+        
+        
+        print result
+        if result and result not in ['NONE', 'ERROR']:
+           
+            for oneRow in result:
+                liID.append(oneRow['id'])
+            print liID               
                         
         return liID
         

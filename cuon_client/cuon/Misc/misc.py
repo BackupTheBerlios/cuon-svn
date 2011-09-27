@@ -46,16 +46,18 @@ class sendAsEmail():
     def sendNormal(self, Type, sTo,  dicUser,  singleDMS,  dicVars ):
         sSubject = 'email'
         sText = 'information below'
+        print 'Path for ',  Type, dicUser['prefPath']['templates']+'/supply_subject.tpl'
         if Type == 'Supply':
             try:
-                f = open(dicUser[prefPath]['templates'])+'/supply_subject.tpl'
+                
+                f = open(dicUser['prefPath']['templates']+'/supply_subject.tpl')
                 sSubject = f.read()
                 f.close()
             except:
                 print 'error read supply subject'
                 
             try:
-                f = open(dicUser[prefPath]['templates'])+'/supply_text.tpl'
+                f = open(dicUser['prefPath']['templates']+'/supply_text.tpl')
                 sText = f.read()
                 f.close()
             except:
@@ -94,7 +96,7 @@ class Treeview:
         print 'fill Tree'
         try:
             treestore = gtk.TreeStore(object)
-            treestore = gtk.TreeStself.Email['sendInvoice'] = Falseore(str)
+            treestore = gtk.TreeStore(str)
             ts.set_model(treestore)
                 
             if liGroups:

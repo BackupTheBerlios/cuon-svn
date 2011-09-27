@@ -2276,7 +2276,30 @@ Dies gilt zum Schlie&szlig;en eines Fensters ( Nicht des Hauptfensters)</para>
 </chapter>
 <chapter><title>Benutzer Konfiguration </title>
 <sect1 id="user_config"><title>Benutzerprofile</title><para>Jeder Benutzer kann sich mehrere Profile erstellen, wobei 1 Profil als Standard festgelegt wird. So kann sich ein Benutzer z.B. auch ein Profile f&uuml;r seine Laptop-Umgebung erstellen. Die Einstellungen umfassen die Localisierung sowie die Pfade zu den Dokumenten und Reports. Ebenso werden hier die Daten f&uuml;r den Scanner festgelegt ( sofern vorhanden und erkannt).Das Benutzerprofil wird unter <emphasis>Werkzeuge --> Einstellungen --> Benutzer</emphasis> eingestellt. </para>
+<para> Es gib ebenso ein paar Voreinstellungen, teilweise k&ouml;nnen die noch nicht ge&auml;ndert werden.</para>
+<itemizedlist>
+     <listitem><para>os.path.normpath(self.td.cuon_path) Ist normalerweise ~/cuon </para></listitem>
+        <listitem><para>self.prefPath['tmp'] =  os.path.normpath(self.td.cuon_path) + '/' </para></listitem> 
+        <listitem><para>self.prefPath['pwd'] =  os.path.normpath(self.td.cuon_path) + '/work' </para></listitem>
+        <listitem><para>self.prefPath['templates'] =  os.path.normpath(self.td.cuon_path) + '/work/templates'</para></listitem>
+        <listitem><para>self.prefPath['StandardInvoice1'] =  os.path.normpath(self.td.cuon_path + '/' +  'Invoice' )</para></listitem>
+        <listitem><para>self.prefPath['StandardSupply1'] =  os.path.normpath(self.td.cuon_path + '/' +  'Delivery' )</para></listitem>
+        <listitem><para>self.prefPath['StandardPickup1'] =  os.path.normpath(self.td.cuon_path + '/' +  'Pickup' )</para></listitem>
+        <listitem><para>self.prefPath['AddressLists'] =  os.path.normpath(self.td.cuon_path + '/' +  'address' )</para></listitem>
+        <listitem><para>self.prefPath['ArticleLists'] =  os.path.normpath(self.td.cuon_path + '/' +  'article' )</para></listitem>
+        <listitem><para>self.prefPath['StandardCAB1'] =  os.path.normpath(self.td.cuon_path + '/' +  'address' )</para></listitem>
 
+        <listitem><para>self.prefPath['ReportStandardInvoice1'] =  os.path.normpath(self.td.cuon_path + '/' +  'Reports' )</para></listitem>
+        <listitem><para>self.prefPath['ReportStandardSupply1'] =  os.path.normpath(self.td.cuon_path + '/' +  'Reports' )</para></listitem>
+        <listitem><para>self.prefPath['ReportStandardPickup1'] =  os.path.normpath(self.td.cuon_path + '/' +  'Reports' )</para></listitem>
+        
+        <listitem><para>self.prefPath['ReportAddressLists'] =  os.path.normpath(self.td.cuon_path + '/' +  'Reports' )</para></listitem>
+        <listitem><para>self.prefPath['ReportArticleLists'] =  os.path.normpath(self.td.cuon_path + '/' +  'Reports' )</para></listitem>
+        <listitem><para>self.prefPath['ReportStockGoodsLists'] =  os.path.normpath(self.td.cuon_path + '/' +  'Reports' )</para></listitem>
+        <listitem><para>self.prefPath['ReportStandardFinancesCAB'] =  os.path.normpath(self.td.cuon_path + '/' +  'Reports' )</para></listitem>
+        
+    </itemizedlist>
+        
 <sect2 id="user_config_1"><title>Profile</title>
 <para>Hier werden die grundlegenden Einstellung f&uuml;r das Benutzer Profil eingestellt. F&uuml;r Deutschland sollte als SQL-Encoding utf-8 und als sprache de eingestellt werden. </para>
 <figure id="up1">
@@ -2313,6 +2336,10 @@ Dies gilt zum Schlie&szlig;en eines Fensters ( Nicht des Hauptfensters)</para>
 <title>Benutzer Einstellungen E-Mail</title>
 <graphic align="center" scale="50" fileref="images/screenshots/iPreferences4.png"/>
 </figure>
+
+<sect3 id="user_config_smtp_server"><title>Email SMTP Server</title>
+<para>Erkl&auml;rung der Felder</para>
+</sect3>
 
 </sect2>
 
@@ -2457,6 +2484,52 @@ die Daten als iCal Daten importieren kann.
 <para><emphasis>Anmerkung: Bei alten C.U.O.N Installationen muss das Verzeichnis /var/cuon_www/iCal per Hand angelegt werden.</emphasis></para>
 </sect2>
 </sect1>
+</chapter>
+<chapter>
+<title>Auftragsbearbeitung</title>
+<sect1 id="order1"><title>Einleitung</title> 
+<para>Die Auftragsbearbeitung besteht aus 3 Modulen, der Anfrage, dem Angebot und dem Auftragsbuch. </para>
+</sect1>
+<sect1 id="order3_1"><title>Auftragsbuch</title> 
+<sect2 id="order3_1_email"><title>Dokumente per email versenden</title> 
+<para>Um Lieferscheine, Rechnungen, etc. automatisch per email zu versenden, m&uuml;ssen folgende Einstellungen vorhanden sein: </para>
+
+<itemizedlist>
+<title>Emaileinstellungen</title>
+
+    <listitem><para> Email Ausgangsserver in den <link linkend='user_config_smtp_server'><emphasis>User-Mail-Einstellungen</emphasis></link> setzen</para></listitem>
+    <listitem><para> Email senden in den   <link linkend='user_config_3'><emphasis>User-Exe-Einstellungen</emphasis></link> setzen</para></listitem>
+    
+     <listitem><para> Im Vorlagenordner sollten die Dateien f&uuml;r den email text liegen </para></listitem>
+    
+        
+    </itemizedlist> 
+    
+     <table id="templ_order_3_ta1">
+  <title>Vorlagen </title>
+  <tgroup cols="3">
+   <thead>
+      <row>
+         <entry>Report</entry>
+         <entry>Betreff</entry>
+         <entry>Text</entry>
+         
+      </row>
+   </thead>
+    <tbody>
+      <row>
+         <entry>Lieferschein</entry>
+         <entry>supply_subject.tpl</entry>
+         <entry>supply_text.tpl</entry>
+         
+      </row>
+       </tbody>
+  </tgroup>
+</table>
+    
+</sect2>
+</sect1>
+
 </chapter>
 <chapter>
 <title>Document Management System ( DMS) </title>
