@@ -198,11 +198,21 @@ class cuonemail(xmlrpc.XMLRPC, basics):
                 s = dicValues[v]
                 for key in dicVars.keys():
                     try:
+                        try:
+                            if self.checkType(dicVars[key], 'unicode'): 
+                                
+                                dicVars[key] = dicVars[key].encode('utf-8')
+                        except Exception, params:
+                            print Exception, params
+                            
                         #print 'try to replace this ', key,  dicVars[key]
                         if dicVars[key] == 'NONE' or dicVars[key] ==None:
                             s = s.replace('##'+ key + ';;','')
                         elif self.checkType(dicVars[key], 'string') :
-                            s = s.replace('##'+ key + ';;',dicVars[key].encode('utf-8'))
+                            
+                            #print dicVars[key],  dicVars[key].decode('utf-8'),  dicVars[key].decode('utf-8').decode('utf-8')
+                            #print dicVars[key].decode('latin-1'),  dicVars[key].decode('utf-8').encode('latin-1')
+                            s = s.replace('##'+ key + ';;',dicVars[key])
                         
                         else:
                             s = s.replace('##'+ key + ';;',`dicVars[key]` )

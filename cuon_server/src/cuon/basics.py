@@ -987,7 +987,9 @@ class basics(xmlrpc.XMLRPC):
         elif sType == 'float':
             if isinstance(oType, types.FloatType):
                 bRet = True
-                                              
+        elif sType == 'unicode':
+            if isinstance(oType, types.UnicodeType):
+                bRet = True                                      
         return bRet
         
     def convertTo(self, value, sType):

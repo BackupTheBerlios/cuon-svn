@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-#-*- coding: iso-8859-1 -*-
+#-*- coding: utf-8 -*-
 """
 ******************************************************************************
 * Description:  SimpleMail ist ein Modul zum Versenden von Emails 
@@ -9,7 +9,7 @@
 * License:      LGPL: http://www.opensource.org/licenses/lgpl-license.php
 * Requirements: Python 2.3:  http://www.python.org
 *
-* Änderungen 2007 von Juergen Hamel, siehe Hinweise in der Datei
+* Ã„nderungen 2007 von Juergen Hamel, siehe Hinweise in der Datei
 *
 * Einfaches Beispiel:
 *
@@ -36,7 +36,7 @@
 *   - Das Versenden von Anhaengen ermoeglicht
 *
 * 2005-09-28 Gerold
-*   - Die Rückgabe des Befehls "sendmail()" wird in das Attribut "statusdict"
+*   - Die RÃ¼ckgabe des Befehls "sendmail()" wird in das Attribut "statusdict"
 *     der Instanz der Klasse "Email" geschrieben. So ist es jetzt auch moeglich,
 *     beim Versenden an mehrere Emailadressen, eine exakte Rueckmeldung ueber
 *     den Versandstatus zu erhalten. Das Format der Rueckgabe wird unter
@@ -55,43 +55,43 @@
 * 2005-09-29 Gerold
 *   - Das Format der Hilfe geaendert.
 *   - Ab jetzt wird auch der "User-Agent" im Header mitgesendet.
-*     Jens, danke für die Idee.
+*     Jens, danke fÃ¼r die Idee.
 *
 * 2005-11-11 Gerold
 *   - Fixed: Das Versenden von Emails funktioniert jetzt auch wenn man
 *     sich am SMTP-Server mit Benutzername und Passwort anmelden muss.
-*     ChrisSek, danke für den Hinweis.
-*   - Es war, glaube ich, recht lästig, dass Testemails gesendet wurden, 
-*     wenn man dieses Modul ausführte. Ich habe es so geändert, dass die
+*     ChrisSek, danke fÃ¼r den Hinweis.
+*   - Es war, glaube ich, recht lÃ¤stig, dass Testemails gesendet wurden, 
+*     wenn man dieses Modul ausfÃ¼hrte. Ich habe es so geÃ¤ndert, dass die
 *     Testemails nur mehr dann gesendet werden, wenn man dieses Modul mit
 *     dem Parameter "test" aufruft. Z.B. ``python simplemail.py test``
 *
 * 2005-12-10 Gerold
 *   - Schlampigkeitsfehler ausgebessert. Es wurde ein Fehler gemeldet, wenn
 *     man beim Initialisieren der Klasse Email auch den Dateinamen eines
-*     Attachments übergeben hatte. Es war ein Unterstrich zu viel, der 
+*     Attachments Ã¼bergeben hatte. Es war ein Unterstrich zu viel, der 
 *     Entfernt wurde.
 *
 * 2006-03-22 Gerold
 *   - Klassen fuer CC-Empfaenger und BCC-Empfaenger hinzugefuegt.
-*     Ab jetzt können Emails auch an CC und BCC gesendet werden.
+*     Ab jetzt kÃ¶nnen Emails auch an CC und BCC gesendet werden.
 *     Wie das funktioniert sieht man in der Funktion ``testen()``
 *
 * 2006-03-30 Gerold
 *   - Reply-to (Antwort an) kann jetzt auch angegeben werden.
 *
 * 2006-05-28 Gerold
-*   - Wortlaut des Headers "User-Agent" geändert.
-*   - Da nicht jeder SMTP-Server das Datum automatisch zum Header hinzufügt, 
-*     wird ab jetzt das Datum beim Senden hinzugefügt. 
-*     (Karl, danke für den wichtigen Hinweis.)
+*   - Wortlaut des Headers "User-Agent" geÃ¤ndert.
+*   - Da nicht jeder SMTP-Server das Datum automatisch zum Header hinzufÃ¼gt, 
+*     wird ab jetzt das Datum beim Senden hinzugefÃ¼gt. 
+*     (Karl, danke fÃ¼r den wichtigen Hinweis.)
 * 2005-06-08 Gerold
 *   - Fehlerklassen von **SimpleMail_Exception** abgeleitet. Damit wird
-*     bei einem Fehler jetzt auch eine aussagekräftigere Fehlermeldung 
+*     bei einem Fehler jetzt auch eine aussagekrÃ¤ftigere Fehlermeldung 
 *     ausgegeben. Dabei habe ich auch die vertauschten Fehlermeldungen
-*     ausgetauscht. (Rebecca, danke für die Meldung.)
+*     ausgetauscht. (Rebecca, danke fÃ¼r die Meldung.)
 *   - Da die Klassen **CCRecipients** und **BCCRecipients** sowiso von
-*     **Recipients** abgeleitet wurden, kann ich mir das Überschreiben
+*     **Recipients** abgeleitet wurden, kann ich mir das Ãœberschreiben
 *     der Initialisierung (__init__) und die Angabe der Slots sparen.
 *
 ******************************************************************************
@@ -508,7 +508,7 @@ class Email(object):
         if attachment_file:
             self.attachments.add_filename(attachment_file)
         self.content_subtype = "plain"
-        self.content_charset = "iso-8859-1"
+        self.content_charset = "utf-8"
         self.header_charset = "us-ascii"
         self.statusdict = None
         if user_agent:
@@ -572,8 +572,8 @@ class Email(object):
                 )
                 msg.attach(att)
 
-        # Empfänger, CC, BCC, Absender, User-Agent, Antwort-an 
-        # und Betreff hinzufügen
+        # EmpfÃ¤nger, CC, BCC, Absender, User-Agent, Antwort-an 
+        # und Betreff hinzufÃ¼gen
         from_str = formataddr((self.from_caption, self.from_address))
         msg["From"] = from_str
         if self.reply_to_address:
@@ -684,5 +684,5 @@ class Email(object):
         return self.statusdict
 
     # Juergen Hamel
-    # Löschen der Testroutinen
+    # LÃ¶schen der Testroutinen
     
