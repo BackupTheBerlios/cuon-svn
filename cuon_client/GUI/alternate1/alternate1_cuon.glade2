@@ -13,7 +13,6 @@
     <child>
       <object class="GtkVBox" id="vbox1">
         <property name="visible">True</property>
-        <property name="orientation">vertical</property>
         <child>
           <object class="GtkMenuBar" id="menubar1">
             <property name="visible">True</property>
@@ -435,6 +434,14 @@
                         <property name="label" translatable="yes">Import Data</property>
                         <property name="use_underline">True</property>
                         <signal name="activate" handler="on_import_data1_activate"/>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkMenuItem" id="ExportData">
+                        <property name="visible">True</property>
+                        <property name="label" translatable="yes">Export Data</property>
+                        <property name="use_underline">True</property>
+                        <signal name="activate" handler="on_ExportData_activate"/>
                       </object>
                     </child>
                     <child>
@@ -889,7 +896,6 @@
             <child>
               <object class="GtkVBox" id="vbox3">
                 <property name="visible">True</property>
-                <property name="orientation">vertical</property>
                 <child>
                   <object class="GtkVBox" id="vbox4">
                     <property name="visible">True</property>

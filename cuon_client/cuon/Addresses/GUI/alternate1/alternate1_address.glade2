@@ -2533,8 +2533,10 @@ auf die Adressen unter Gespr&#xE4;chspartner</property>
                                         </child>
                                         <child>
                                           <widget class="GtkButton" id="bSendMail">
+                                            <property name="visible">True</property>
                                             <property name="can_focus">True</property>
                                             <property name="receives_default">False</property>
+                                            <property name="tooltip" translatable="yes">&#xFC;ber cuon versenden</property>
                                             <signal name="clicked" handler="on_bSendMail_clicked"/>
                                             <child>
                                               <widget class="GtkAlignment" id="alignment18">
@@ -2559,7 +2561,7 @@ auf die Adressen unter Gespr&#xE4;chspartner</property>
                                                     <child>
                                                       <widget class="GtkLabel" id="label124">
                                                         <property name="visible">True</property>
-                                                        <property name="label" translatable="yes">Send Email</property>
+                                                        <property name="label" translatable="yes">Email (intern)</property>
                                                         <property name="use_underline">True</property>
                                                       </widget>
                                                       <packing>
@@ -2581,10 +2583,12 @@ auf die Adressen unter Gespr&#xE4;chspartner</property>
                                         </child>
                                         <child>
                                           <widget class="GtkButton" id="bSendExternEmail">
-                                            <property name="label" translatable="yes">sende Email</property>
+                                            <property name="label" translatable="yes">Email (extern)</property>
                                             <property name="visible">True</property>
                                             <property name="can_focus">True</property>
                                             <property name="receives_default">False</property>
+                                            <property name="tooltip" translatable="yes">&#xFC;ber Standardmailprogramm
+versenden (z.B. Thunderbird)</property>
                                             <property name="use_underline">True</property>
                                             <signal name="clicked" handler="on_bSendExternEmail_clicked"/>
                                           </widget>
