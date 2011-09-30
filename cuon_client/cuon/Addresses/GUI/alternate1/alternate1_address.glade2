@@ -1234,7 +1234,9 @@ auf die Adressen unter Gespr&#xE4;chspartner</property>
                               <widget class="GtkTreeView" id="tv_address">
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
+                                <property name="tooltip" translatable="yes">Strg-y</property>
                                 <signal name="row_activated" handler="on_tree1_row_activated"/>
+                                <accelerator key="y" signal="grab-focus" modifiers="GDK_CONTROL_MASK"/>
                               </widget>
                             </child>
                           </widget>
