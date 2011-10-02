@@ -449,9 +449,9 @@ class orderwindow(chooseWindows,  ArticlesFastSelection):
         for key in dicOrder.keys():
             dicVars['sm']['delivery_' + key] = dicOrder[key]
             
-        print 'dicVars[sm] = ',  dicVars['sm']
+        #print 'dicVars[sm] = ',  dicVars['sm']
         
-        print 'send email ok ',  newID,  self.dicUser['Email']['sendSupply']
+        #print 'send email ok ',  newID,  self.dicUser['Email']['sendSupply']
         if self.dicUser['Email']['sendSupply'] and sTo[0]:
             
             cmm = cuon.Misc.messages.messages()

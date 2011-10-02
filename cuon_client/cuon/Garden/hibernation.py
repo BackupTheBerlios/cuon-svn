@@ -273,8 +273,35 @@ class hibernationwindow(chooseWindows):
         dicOrder['orderNumber'] = self.singleHibernation.ID
         print "Start print incoming document 3"
 
-        Pdf = self.rpc.callRP('Report.server_hibernation_incoming_document', dicOrder, self.dicUser)
-        self.showPdf(Pdf, self.dicUser,'INCOMING')
+        fname = self.rpc.callRP('Report.server_hibernation_incoming_document', dicOrder, self.dicUser)
+        self.showPdf(fname, self.dicUser,'INCOMING')
+        
+        
+        self.documentTools.importDocument(self.singleDMS,self.dicUser,fname)
+        self.singleDMS.ModulNumber = self.MN['Hibernation']
+        self.singleDMS.sep_info_1 = self.singleHibernation.ID    
+        self.singleDMS.newRecord()
+        self.singleDMS.newDate = self.getActualDateTime()['date']
+        self.singleDMS.newTitle = _('incomming') + ' ' + `dicOrder['incomingNumber'] `
+        print self.singleDMS.newDate
+        self.singleDMS.newCategory = _('incomming')
+        self.singleDMS.Rights = 'INCOMMING'
+        
+        newID = self.singleDMS.save(['document_image'])
+        
+        dicVars = {}
+        dicVars['sm'] = self.getHibernationInfo()
+        for key in dicOrder.keys():
+            dicVars['sm']['delivery_' + key] = dicOrder[key]
+            
+            
+        if self.dicUser['Email']['sendPickup'] and sTo[0]:
+            
+            cmm = cuon.Misc.messages.messages()
+            if cmm.QuestionMsg(_('Would you send it as email ?')):
+                self.singleDMS.load(newID)
+                cme = cuon.Misc.misc.sendAsEmail()
+                cme.sendNormal('Incomming2', sTo,  self.dicUser,  self.singleDMS,  dicVars)
         
         #Pdf = hibernation_incoming_document.hibernation_incoming_document(dicOrder)
         
@@ -642,7 +669,22 @@ class hibernationwindow(chooseWindows):
             ePN1 = 1
         return ePN1
         
+    def getHibernationInfo(self):
         
+        
+        dicOrder = self.singleHibernation.firstRecord
+     
+        for key in self.singleAddress.firstRecord.keys():
+            dicOrder['address_' + key] = self.singleAddress.firstRecord[key]
+        dicInternInformation = self.rpc.callRP('Database.getInternInformation',self.dicUser)
+        if dicInternInformation not in ['NONE','ERROR']:
+            for key in dicInternInformation:
+                dicOrder[key] = dicInternInformation[key]
+#        if self.singlePartner.ID > 0:
+#            for key in self.singlePartner.firstRecord.keys():
+#                dicOrder['partner_' + key] = self.singlePartner.firstRecord[key]
+            
+        return dicOrder   
     def refreshTree(self):
         self.singleHibernation.disconnectTree()
         self.singleHibernationPlant.disconnectTree()

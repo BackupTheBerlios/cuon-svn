@@ -577,7 +577,7 @@ class addresswindow(chooseWindows):
         dicV = {}
         dicV['From'] = self.dicUser['Email']['From']
         dicV['To'] = 'Newsletter: '
-        dicV['Signatur'] = self.dicUser['Email']['Signatur']
+        dicV['Signatur'] = '\n\n -- \n' + self.dicUser['Email']['Signatur']
 
         print dicV
         em = cuon.E_Mail.sendEmail.sendEmail(dicV)
@@ -1565,7 +1565,7 @@ class addresswindow(chooseWindows):
         dicV['sm'] = self.singleAddress.getFirstRecord()
         self.setClipboard(dicV['To'])
 
-        dicV['Signatur'] = self.dicUser['Email']['Signatur']
+        dicV['Signatur'] = '\n\n -- \n' + self.dicUser['Email']['Signatur']
         
         print dicV
         em = cuon.E_Mail.sendEmail.sendEmail(dicV)
@@ -1595,7 +1595,7 @@ class addresswindow(chooseWindows):
         dicV['From'] = self.dicUser['Email']['From']
         dicV['To'] = self.singlePartner.getEmail()
         self.setClipboard(self.singlePartner.getEmail())
-        dicV['Signatur'] = self.dicUser['Email']['Signatur']
+        dicV['Signatur'] = '\n\n -- \n' + self.dicUser['Email']['Signatur']
         print dicV
         em = cuon.E_Mail.sendEmail.sendEmail(dicV)
         

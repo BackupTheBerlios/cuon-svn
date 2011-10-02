@@ -47,28 +47,35 @@ class sendAsEmail():
         sSubject = 'email'
         sText = 'information below'
         print 'Path for ',  Type, dicUser['prefPath']['templates']+'/supply_subject.tpl'
+        
         if Type == 'Supply':
-            try:
+            fname_text = dicUser['prefPath']['templates']+'/supply_text.tpl'
+            fname_subject = dicUser['prefPath']['templates']+'/supply_subject.tpl'
+        elif Type == 'Incomming2': 
+            fname_text = dicUser['prefPath']['templates']+'/incomming2_text.tpl'
+            fname_subject = dicUser['prefPath']['templates']+'/incomming2_subject.tpl'
+    
+        try:
+            
+            f = open(fname_subject)
+            sSubject = f.read()
+            f.close()
+        except:
+            print 'error read subject'
+            
+        try:
+            f = open(fname_text)
+            sText = f.read()
+            f.close()
+        except:
+            print 'error read  Text'
                 
-                f = open(dicUser['prefPath']['templates']+'/supply_subject.tpl')
-                sSubject = f.read()
-                f.close()
-            except:
-                print 'error read supply subject'
-                
-            try:
-                f = open(dicUser['prefPath']['templates']+'/supply_text.tpl')
-                sText = f.read()
-                f.close()
-            except:
-                print 'error read supply Text'
-                    
         
         
         dicVars['From'] = dicUser['Email']['From']
         dicVars['To'] = sTo
-        
-        dicVars['Body'] = sText + '\n\n -- \n' + dicUser['Email']['Signatur']
+        dicVars['Signatur'] = '\n\n -- \n' + dicUser['Email']['Signatur']
+        dicVars['Body'] = sText 
         dicVars['email_subject'] = sSubject
         
         print dicVars
